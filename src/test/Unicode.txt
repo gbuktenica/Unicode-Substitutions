@@ -1,0 +1,7 @@
+Hyphen              -
+EnDash              –
+EmDash              —
+Start Double Quote  “
+End Double Quote    ”
+Start Single Quote  ‘
+End Single Quote    ’
