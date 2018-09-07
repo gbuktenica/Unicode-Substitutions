@@ -8,17 +8,17 @@
         "vscode": "^1.26.0"
     },
     "categories": [
-        "Other"
+        "Linters"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.unicodeLint"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "extension.unicodeLint",
+                "title": "Unicode Lint"
             }
         ]
     },
