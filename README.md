@@ -37,3 +37,35 @@ This is extension is still under initial development and has not been released.
 ## Release Notes
 
 This is extension is still under initial development and has not been released.
+
+## Installation Guide
+
+This extension is not currently published in the Visual Studio Code market place. To install manually:
+
+1. In a command window open the extension folder.
+
+```plaintext
+cd %userprofile%.vscode\\extensions
+```
+
+1. Clone this repository.
+
+```plaintext
+git clone
+```
+
+1. Open the subfolder Unicode-Substitutions.
+
+1. Install the dependencies
+
+```plaintext
+npm install
+```
+
+1. Compile the dependencies.
+
+```plaintext
+npm run compile
+```
+
+1. Restart Visual Studio code if it was open.
