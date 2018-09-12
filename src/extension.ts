@@ -7,7 +7,6 @@ export function activate(context: vscode.ExtensionContext) {
 
     // create a decorator type to decorate Unicode
     const unicodeDecorationType = vscode.window.createTextEditorDecorationType({
-        cursor: 'crosshair',
         backgroundColor: 'rgba(255,255,0,0.3)'
     });
 
@@ -44,16 +43,15 @@ export function activate(context: vscode.ExtensionContext) {
         }
         const regEx = /\u2013|\u2014|\u201C|\u201D|\u2018|\u2019/g;
         const text = activeEditor.document.getText();
-        const smallNumbers: vscode.DecorationOptions[] = [];
-        const largeNumbers: vscode.DecorationOptions[] = [];
+        const unicodeCharacters: vscode.DecorationOptions[] = [];
         let match;
         while (match = regEx.exec(text)) {
             const startPos = activeEditor.document.positionAt(match.index);
             const endPos = activeEditor.document.positionAt(match.index + match[0].length);
             const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Unicode character found' };
-            smallNumbers.push(decoration);
+            unicodeCharacters.push(decoration);
         }
-        activeEditor.setDecorations(unicodeDecorationType, smallNumbers);
+        activeEditor.setDecorations(unicodeDecorationType, unicodeCharacters);
     }
 }
 
