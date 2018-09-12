@@ -45,13 +45,13 @@ This extension is not currently published in the Visual Studio Code market place
 1. In a command window open the extension folder.
 
 ```plaintext
-cd %userprofile%.vscode\\extensions
+cd %userprofile%\.vscode\extensions
 ```
 
 1. Clone this repository.
 
 ```plaintext
-git clone
+git clone <REPO>
 ```
 
 1. Open the subfolder Unicode-Substitutions.
