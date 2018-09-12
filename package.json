@@ -4,6 +4,7 @@
     "description": "Corrects common unicode substitutions such as quotes and hyphens.",
     "version": "0.0.1",
     "publisher": "GlenBuktenica",
+    "license": "MIT",
     "engines": {
         "vscode": "^1.15.0"
     },
@@ -24,5 +25,9 @@
         "vscode": "^1.1.17",
         "typescript": "^2.5.3",
         "@types/node": "7.0.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:gbuktenica/Unicode-Substitutions.git"
     }
 }
