@@ -4,4 +4,7 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## [Unreleased]
 
-- Initial release
+- 0.0.1
+
+Development release
+Contains very basic working code.
