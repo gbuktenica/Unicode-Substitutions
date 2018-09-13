@@ -28,6 +28,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:gbuktenica/Unicode-Substitutions.git"
+        "url": "https://github.com/gbuktenica/Unicode-Substitutions.git"
     }
 }
