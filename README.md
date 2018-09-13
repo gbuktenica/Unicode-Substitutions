@@ -5,7 +5,9 @@
 
 ## Overview
 
-This Visual Studio Code extension will detect common unicode substitutions when code is copied from various sources such web pages and Microsoft Word documents.
+This Visual Studio Code extension will detect and highlight common unicode substitutions when code is copied from various sources such web pages and document editors.  
+
+![Animation](/images/Animation.gif)
 
 ## Features
 
@@ -20,7 +22,7 @@ Highlights the below Unicode:
 | Start Single Quote | ‘         | \\u2018 | Single Quote | '         | \\u0027              |
 | End Single Quote   | ’         | \\u2019 | Single Quote | '         | \\u0027              |
 
-Auto fix will be release in a future version.
+Auto replacement will be release in a future version.
 
 ## Requirements
 
