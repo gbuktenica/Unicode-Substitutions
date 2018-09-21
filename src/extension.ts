@@ -5,53 +5,58 @@ export function activate(context: vscode.ExtensionContext) {
 
     console.log('Unicode Substitutions is activated');
 
-    // create a decorator type to decorate Unicode
-    const unicodeDecorationType = vscode.window.createTextEditorDecorationType({
-        backgroundColor: 'rgba(255,255,0,0.3)'
-    });
-
     // Trigger linting
     let activeEditor = vscode.window.activeTextEditor;
     if (activeEditor) {
-        triggerUpdateDecorations();
+        triggerupdateLinting();
     }
 
     vscode.window.onDidChangeActiveTextEditor(editor => {
         activeEditor = editor;
         if (editor) {
-            triggerUpdateDecorations();
+            triggerupdateLinting();
         }
     }, null, context.subscriptions);
 
     vscode.workspace.onDidChangeTextDocument(event => {
         if (activeEditor && event.document === activeEditor.document) {
-            triggerUpdateDecorations();
+            triggerupdateLinting();
         }
     }, null, context.subscriptions);
 
     var timeout = null;
-    function triggerUpdateDecorations() {
+    function triggerupdateLinting() {
         if (timeout) {
             clearTimeout(timeout);
         }
-        timeout = setTimeout(updateDecorations, 500);
+        timeout = setTimeout(updateLinting, 500);
     }
 
-    function updateDecorations() {
+    function updateLinting() {
         if (!activeEditor) {
             return;
         }
-        const regEx = /\u2013|\u2014|\u201C|\u201D|\u2018|\u2019/g;
-        const text = activeEditor.document.getText();
-        const unicodeCharacters: vscode.DecorationOptions[] = [];
+        let diagnosticCollection = null;
+        const diagnostics = []
         let match;
+        const text = activeEditor.document.getText();
+
+        diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
+        context.subscriptions.push(diagnosticCollection);
+
+        // Regex rules to detect unicode characters.
+        const regEx = /\u2013|\u2014|\u201C|\u201D|\u2018|\u2019/g;
+
         while (match = regEx.exec(text)) {
+            // Loop through each regex match and push diagnostics to array.
             const startPos = activeEditor.document.positionAt(match.index);
             const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-            const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Unicode character found' };
-            unicodeCharacters.push(decoration);
+            let range = new vscode.Range(startPos, endPos)
+            let diagnostic = new vscode.Diagnostic(range, 'Suspicious unicode character found', vscode.DiagnosticSeverity.Warning);
+            diagnostic.source = "Unicode Substitutions";
+            diagnostics.push(diagnostic);
         }
-        activeEditor.setDecorations(unicodeDecorationType, unicodeCharacters);
+        // Push diagnostics to VS Code
+        diagnosticCollection.set(activeEditor.document.uri, diagnostics);
     }
 }
-
