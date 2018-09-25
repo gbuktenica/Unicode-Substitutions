@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         // Regex rules to detect unicode characters.
         const findRegExs = [/\u2013/g, /\u2014/g, /\u201C/g, /\u201D/g, /\u2018/g, /\u2019/g];
-        const replaceRegExs = ["\u002D", "\u2014", "\u201C", /\u201D/g, /\u2018/g, /\u2019/g];
+        const replaceRegExs = ["\u002D", "\u002D", "\u0022", "\u0022", "\u0027", "\u0027"];
         findRegExs.forEach(regEx => {
             while (match = regEx.exec(text)) {
                 // Loop through each regex match and push diagnostics to array.
