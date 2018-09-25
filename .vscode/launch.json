@@ -1,7 +1,7 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
+    "version": "0.2.0",
+    "configurations": [
+        {
             "name": "Launch Extension",
             "type": "extensionHost",
             "request": "launch",
@@ -12,5 +12,5 @@
             "outFiles": [ "${workspaceRoot}/out/**/*.js" ],
             "preLaunchTask": "npm: watch"
         }
-	]
+    ]
 }
