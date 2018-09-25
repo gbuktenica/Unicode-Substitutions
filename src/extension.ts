@@ -1,4 +1,8 @@
 import * as vscode from 'vscode';
+import * as lintingRules from './LintingRules.json'
+
+let diagnosticCollection = null;
+diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
 
 // this method is called when vs code is activated
 export function activate(context: vscode.ExtensionContext) {
@@ -36,26 +40,28 @@ export function activate(context: vscode.ExtensionContext) {
         if (!activeEditor) {
             return;
         }
-        let diagnosticCollection = null;
+
         const diagnostics = []
         let match;
         const text = activeEditor.document.getText();
 
-        diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
         context.subscriptions.push(diagnosticCollection);
+        console.log(lintingRules.LintingRules);
 
         // Regex rules to detect unicode characters.
-        const regEx = /\u2013|\u2014|\u201C|\u201D|\u2018|\u2019/g;
-
-        while (match = regEx.exec(text)) {
-            // Loop through each regex match and push diagnostics to array.
-            const startPos = activeEditor.document.positionAt(match.index);
-            const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-            let range = new vscode.Range(startPos, endPos)
-            let diagnostic = new vscode.Diagnostic(range, 'Suspicious unicode character found', vscode.DiagnosticSeverity.Warning);
-            diagnostic.source = "Unicode Substitutions";
-            diagnostics.push(diagnostic);
-        }
+        const findRegExs = [/\u2013/g, /\u2014/g, /\u201C/g, /\u201D/g, /\u2018/g, /\u2019/g];
+        const replaceRegExs = ["\u002D", "\u2014", "\u201C", /\u201D/g, /\u2018/g, /\u2019/g];
+        findRegExs.forEach(regEx => {
+            while (match = regEx.exec(text)) {
+                // Loop through each regex match and push diagnostics to array.
+                const startPos = activeEditor.document.positionAt(match.index);
+                const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+                let range = new vscode.Range(startPos, endPos)
+                let diagnostic = new vscode.Diagnostic(range, 'Suspicious unicode character found', vscode.DiagnosticSeverity.Warning);
+                diagnostic.source = "Unicode Substitutions";
+                diagnostics.push(diagnostic);
+            }
+        });
         // Push diagnostics to VS Code
         diagnosticCollection.set(activeEditor.document.uri, diagnostics);
     }
