@@ -12,8 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
     // Regex rules to detect unicode characters.
     const findRegExs = [/\u2013/g, /\u2014/g, /\u201C/g, /\u201D/g, /\u2018/g, /\u2019/g];
     const replaceRegExs = ["\u002D", "\u002D", "\u0022", "\u0022", "\u0027", "\u0027"];
-
-    // Trigger linting
+    //
+    // Linting section
+    //
     let activeEditor = vscode.window.activeTextEditor;
     if (activeEditor) {
         triggerupdateLinting();
@@ -50,8 +51,8 @@ export function activate(context: vscode.ExtensionContext) {
         const text = activeEditor.document.getText();
 
         context.subscriptions.push(diagnosticCollection);
-        console.log(lintingRules.LintingRules);
 
+        let loopDiagnostic = 0
         findRegExs.forEach(regEx => {
             while (match = regEx.exec(text)) {
                 // Loop through each regex match and push diagnostics to array.
@@ -62,8 +63,32 @@ export function activate(context: vscode.ExtensionContext) {
                 diagnostic.source = "Unicode Substitutions";
                 diagnostics.push(diagnostic);
             }
+            loopDiagnostic++;
         });
         // Push diagnostics to VS Code
         diagnosticCollection.set(activeEditor.document.uri, diagnostics);
     }
+    //
+    // Formatter section
+    //
+
+    vscode.languages.registerDocumentFormattingEditProvider('foo-lang', {
+        provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+            let arrayText = []
+            let match;
+            const text = activeEditor.document.getText();
+            let loopFormatter;
+            findRegExs.forEach(regEx => {
+                while (match = regEx.exec(text)) {
+                    // Loop through each regex match.
+                    const startPos = activeEditor.document.positionAt(match.index);
+                    const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+                    let range = new vscode.Range(startPos, endPos)
+                    arrayText = [vscode.TextEdit.replace(range, "'")];
+                }
+                loopFormatter ++;
+            });
+            return arrayText
+        }
+    });
 }

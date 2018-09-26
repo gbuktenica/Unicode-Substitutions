@@ -15,6 +15,25 @@
         "*"
     ],
     "main": "./out/extension",
+        "contributes": {
+            "languages": [
+                {
+                    "id": "foo-lang",
+                    "aliases": [
+                        "Foo"
+                    ],
+                    "extensions": [
+                        "foo"
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "command": "extension.format-foo",
+                    "title": "(Bad) Format Foo Files"
+                }
+            ]
+        },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
