@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
     const findRegExs = [/\u2013/g, /\u2014/g, /\u201C/g, /\u201D/g, /\u2018/g, /\u2019/g];
     const replaceRegExs = ["\u002D", "\u002D", "\u0022", "\u0022", "\u0027", "\u0027"];
     const replaceChars = ["-", "-", '"', '"', '\'', '\''];
-    const supportedLanguages = ['PowerShell', 'markdown']
+    const supportedLanguages = ['*']
     let activeEditor = vscode.window.activeTextEditor;
 
     //
