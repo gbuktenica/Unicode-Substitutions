@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as lintingRules from './LintingRules.json'
 
 let diagnosticCollection = null;
 diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
@@ -8,16 +7,18 @@ diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDis
 export function activate(context: vscode.ExtensionContext) {
 
     console.log('Unicode Substitutions is activated');
-
-    // Regex rules to detect unicode characters.
+    //
+    // Common section
+    //
     const findRegExs = [/\u2013/g, /\u2014/g, /\u201C/g, /\u201D/g, /\u2018/g, /\u2019/g];
     const replaceRegExs = ["\u002D", "\u002D", "\u0022", "\u0022", "\u0027", "\u0027"];
     const replaceChars = ["-", "-", '"', '"', '\'', '\''];
     const supportedLanguages = ['PowerShell', 'markdown']
+    let activeEditor = vscode.window.activeTextEditor;
+
     //
     // Linting section
     //
-    let activeEditor = vscode.window.activeTextEditor;
     if (activeEditor) {
         triggerupdateLinting();
     }
@@ -60,8 +61,9 @@ export function activate(context: vscode.ExtensionContext) {
                 // Loop through each regex match and push diagnostics to array.
                 const startPos = activeEditor.document.positionAt(match.index);
                 const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-                let range = new vscode.Range(startPos, endPos)
-                let diagnostic = new vscode.Diagnostic(range, 'Suspicious unicode character found', vscode.DiagnosticSeverity.Warning);
+                let range = new vscode.Range(startPos, endPos);
+                let message = 'Suspicious unicode character' + findRegExs[loopDiagnostic] + 'found.' + ' Replace with ' + replaceRegExs[loopDiagnostic];
+                let diagnostic = new vscode.Diagnostic(range, message, vscode.DiagnosticSeverity.Warning);
                 diagnostic.source = "Unicode Substitutions";
                 diagnostics.push(diagnostic);
             }
@@ -70,10 +72,10 @@ export function activate(context: vscode.ExtensionContext) {
         // Push diagnostics to VS Code
         diagnosticCollection.set(activeEditor.document.uri, diagnostics);
     }
+
     //
     // Formatter section
     //
-
     vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
         provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
             let arrayText = []
