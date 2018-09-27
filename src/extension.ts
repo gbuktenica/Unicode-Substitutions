@@ -88,7 +88,7 @@ export function activate(context: vscode.ExtensionContext) {
                     const startPos = activeEditor.document.positionAt(match.index);
                     const endPos = activeEditor.document.positionAt(match.index + match[0].length);
                     let range = new vscode.Range(startPos, endPos)
-                    arrayText = [vscode.TextEdit.replace(range, replaceChars[loopFormatter])];
+                    arrayText.push(vscode.TextEdit.replace(range, replaceChars[loopFormatter]));
                 }
                 loopFormatter ++;
             });
