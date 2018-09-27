@@ -5,13 +5,13 @@
 
 ## Overview
 
-This Visual Studio Code extension will detect and highlight common unicode substitutions when code is copied from various sources such web pages and document editors.  
+This Visual Studio Code extension will lint common unicode substitutions when code is copied from various sources such web pages and document editors. Some substitutions such as using an En Dash instead of a Hyphen will pass language linting and then fail to execute.
 
 ![Animation](/images/Animation.gif)
 
 ## Features
 
-Highlights the below Unicode:
+Lints the below Unicode:
 
 | Character Name     | Character | Unicode | Replace with | Character | Replace with Unicode |
 | ------------------ | --------- | ------- | ------------ | --------- | -------------------- |
@@ -22,7 +22,7 @@ Highlights the below Unicode:
 | Start Single Quote | ‘         | \\u2018 | Single Quote | '         | \\u0027              |
 | End Single Quote   | ’         | \\u2019 | Single Quote | '         | \\u0027              |
 
-Auto replacement will be release in a future version.
+Format Document (Alt + Shift + F) is supported for all languages.
 
 ## Requirements
 
@@ -32,17 +32,19 @@ Visual Studio code 1.27 or higher.
 
 N/A
 
-## Known Issues
-
-This is extension is still under initial development and has not been released.
-
 ## Release Notes
 
-This is extension is still under initial development and has not been released.
+This is the first release.
 
 ## Installation Guide
 
-This extension is not currently published in the Visual Studio Code market place. To install manually:
+### Install from the Market Place
+
+1. Open Extensions (Control + Shift + X)
+
+1. Search for "Unicode-Substitutions"
+
+### Manually Install
 
 1. In a command window open the extension folder.
 
