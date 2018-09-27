@@ -63,7 +63,7 @@ export function activate(context: vscode.ExtensionContext) {
                 const startPos = activeEditor.document.positionAt(match.index);
                 const endPos = activeEditor.document.positionAt(match.index + match[0].length);
                 let range = new vscode.Range(startPos, endPos);
-                let message = 'Suspicious unicode character' + findRegExs[loopDiagnostic] + 'found.' + ' Replace with ' + replaceRegExs[loopDiagnostic];
+                let message = 'Suspicious unicode character ' + invalidChars[loopDiagnostic] + ' found.' + ' Replace with ' + replaceRegExs[loopDiagnostic];
                 let diagnostic = new vscode.Diagnostic(range, message, vscode.DiagnosticSeverity.Warning);
                 diagnostic.source = "Unicode Substitutions";
                 diagnostics.push(diagnostic);
