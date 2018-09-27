@@ -12,6 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
     // Regex rules to detect unicode characters.
     const findRegExs = [/\u2013/g, /\u2014/g, /\u201C/g, /\u201D/g, /\u2018/g, /\u2019/g];
     const replaceRegExs = ["\u002D", "\u002D", "\u0022", "\u0022", "\u0027", "\u0027"];
+    const replaceChars = ["-", "-", '"', '"', '\'', '\''];
+    const supportedLanguages = ['PowerShell', 'markdown']
     //
     // Linting section
     //
@@ -72,19 +74,19 @@ export function activate(context: vscode.ExtensionContext) {
     // Formatter section
     //
 
-    vscode.languages.registerDocumentFormattingEditProvider('foo-lang', {
+    vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
         provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
             let arrayText = []
             let match;
             const text = activeEditor.document.getText();
-            let loopFormatter;
+            let loopFormatter = 0;
             findRegExs.forEach(regEx => {
                 while (match = regEx.exec(text)) {
                     // Loop through each regex match.
                     const startPos = activeEditor.document.positionAt(match.index);
                     const endPos = activeEditor.document.positionAt(match.index + match[0].length);
                     let range = new vscode.Range(startPos, endPos)
-                    arrayText = [vscode.TextEdit.replace(range, "'")];
+                    arrayText = [vscode.TextEdit.replace(range, replaceChars[loopFormatter])];
                 }
                 loopFormatter ++;
             });
