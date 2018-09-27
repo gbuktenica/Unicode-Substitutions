@@ -4,6 +4,7 @@
     "description": "Corrects common unicode substitutions such as quotes and hyphens.",
     "version": "0.0.1",
     "publisher": "GlenBuktenica",
+    "icon": "images/icon.png",
     "license": "MIT",
     "engines": {
         "vscode": "^1.15.0"
