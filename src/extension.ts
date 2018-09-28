@@ -56,10 +56,12 @@ export function activate(context: vscode.ExtensionContext) {
 
         context.subscriptions.push(diagnosticCollection);
 
+        //Loop through each linting rule
         lintingRules['LintingRules'].forEach(rule => {
             lastMatchIndex=-1;
             while ((matchIndex = text.indexOf(rule.invalid)) > -1 && matchIndex>lastMatchIndex) {
-                // Loop through each regex match and push diagnostics to array.
+
+                //Loop through character match to the current linting rule
                 match = text.substring(matchIndex,matchIndex+rule.invalid.length);
                 const startPos = activeEditor.document.positionAt(matchIndex);
                 const endPos = activeEditor.document.positionAt(matchIndex+rule.invalid.length);
@@ -84,8 +86,12 @@ export function activate(context: vscode.ExtensionContext) {
             let arrayText = []
             const text = activeEditor.document.getText();
             let match, matchIndex, lastMatchIndex;
+
+            //Loop through each linting rule
             lintingRules['LintingRules'].forEach(rule => {
                 lastMatchIndex=-1;
+
+                //Loop through character match to the current linting rule
                 while ((matchIndex = text.indexOf(rule.invalid)) > -1 && matchIndex>lastMatchIndex) {
                     // Loop through each regex match.
                     match = text.substring(matchIndex,matchIndex+rule.invalid.length);
