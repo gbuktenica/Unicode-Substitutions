@@ -1,33 +1,33 @@
 {
     "LintingRules": [
         {
-            "find": "/\u2013/",
-            "replace": "u002D",
-            "message": "En Dash should be a Hyphen"
+            "invalid": "–",
+            "valid": "-",
+            "message": "En Dash should be a Hyphen."
         },
         {
-            "find": "/\u2014/",
-            "replace": "u002D",
+            "invalid": "—",
+            "valid": "-",
             "message": "Em Dash should be a Hyphen"
         },
         {
-            "find": "/\u201C/",
-            "replace": "u0022",
+            "invalid": "“",
+            "valid": "\"",
             "message": "Start double quotes should be straight double quotes"
         },
         {
-            "find": "/\u201D/",
-            "replace": "u0022",
+            "invalid": "”",
+            "valid": "\"",
             "message": "End double quotes should be straight double quotes"
         },
         {
-            "find": "/\u2018/",
-            "replace": "u0027",
+            "invalid": "‘",
+            "valid": "\"",
             "message": "Start single quote should be straight single quote"
         },
         {
-            "find": "/\u2019/",
-            "replace": "u0027",
+            "invalid": "’",
+            "valid": "\"",
             "message": "End single quote should be straight single quote"
         }
     ]

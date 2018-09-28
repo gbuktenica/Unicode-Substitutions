@@ -5,7 +5,7 @@ diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDis
 
 // this method is called when vs code is activated
 export function activate(context: vscode.ExtensionContext) {
-
+    var lintingRules = require('./LintingRules.json')
     console.log('Unicode Substitutions is activated');
     //
     // Common section
@@ -51,25 +51,27 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         const diagnostics = []
-        let match;
+        let match, matchIndex, lastMatchIndex;
         const text = activeEditor.document.getText();
 
         context.subscriptions.push(diagnosticCollection);
 
-        let loopDiagnostic = 0
-        findRegExs.forEach(regEx => {
-            while (match = regEx.exec(text)) {
+        lintingRules['LintingRules'].forEach(rule => {
+            lastMatchIndex=-1;
+            while ((matchIndex = text.indexOf(rule.invalid)) > -1 && matchIndex>lastMatchIndex) {
                 // Loop through each regex match and push diagnostics to array.
-                const startPos = activeEditor.document.positionAt(match.index);
-                const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+                match = text.substring(matchIndex,matchIndex+rule.invalid.length);
+                const startPos = activeEditor.document.positionAt(matchIndex);
+                const endPos = activeEditor.document.positionAt(matchIndex+rule.invalid.length);
                 let range = new vscode.Range(startPos, endPos);
-                let message = 'Suspicious unicode character' + findRegExs[loopDiagnostic] + 'found.' + ' Replace with ' + replaceRegExs[loopDiagnostic];
+                let message = rule.message;
                 let diagnostic = new vscode.Diagnostic(range, message, vscode.DiagnosticSeverity.Warning);
                 diagnostic.source = "Unicode Substitutions";
                 diagnostics.push(diagnostic);
+                lastMatchIndex = text.indexOf(rule.invalid)
             }
-            loopDiagnostic++;
         });
+
         // Push diagnostics to VS Code
         diagnosticCollection.set(activeEditor.document.uri, diagnostics);
     }
@@ -80,16 +82,18 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
         provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
             let arrayText = []
-            let match;
             const text = activeEditor.document.getText();
-            let loopFormatter = 0;
-            findRegExs.forEach(regEx => {
-                while (match = regEx.exec(text)) {
+            let match, matchIndex, lastMatchIndex;
+            lintingRules['LintingRules'].forEach(rule => {
+                lastMatchIndex=-1;
+                while ((matchIndex = text.indexOf(rule.invalid)) > -1 && matchIndex>lastMatchIndex) {
                     // Loop through each regex match.
-                    const startPos = activeEditor.document.positionAt(match.index);
-                    const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+                    match = text.substring(matchIndex,matchIndex+rule.invalid.length);
+                    const startPos = activeEditor.document.positionAt(matchIndex);
+                    const endPos = activeEditor.document.positionAt(matchIndex + rule.invalid.length);
                     let range = new vscode.Range(startPos, endPos)
-                    arrayText.push(vscode.TextEdit.replace(range, replaceChars[getCharIndex(match[0])]));
+                    arrayText.push(vscode.TextEdit.replace(range, replaceChars[getCharIndex(match)]));
+                    lastMatchIndex = text.indexOf(rule.invalid)
                 }
             });
             return arrayText
@@ -97,6 +101,7 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     function getCharIndex(matchedChar){
+        var test = lintingRules;
         for(let i in invalidChars)
             if(matchedChar==invalidChars[i])
             return i;
