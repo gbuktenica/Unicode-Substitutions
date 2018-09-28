@@ -50,6 +50,10 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
 
+        // Read linting rules from workspace (settings.json etc)
+        let lintingRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.rules');
+        console.log(lintingRules)
+
         const diagnostics = []
         let match, matchIndex, lastMatchIndex;
         const text = activeEditor.document.getText();
@@ -57,7 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
         context.subscriptions.push(diagnosticCollection);
 
         //Loop through each linting rule
-        lintingRules['LintingRules'].forEach(rule => {
+        lintingRules.forEach(rule => {
             lastMatchIndex=-1;
             while ((matchIndex = text.indexOf(rule.invalid)) > -1 && matchIndex>lastMatchIndex) {
 
@@ -83,12 +87,16 @@ export function activate(context: vscode.ExtensionContext) {
     //
     vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
         provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+            // Read linting rules from workspace (settings.json etc)
+            let lintingRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.rules');
+            console.log(lintingRules)
+
             let arrayText = []
             const text = activeEditor.document.getText();
             let match, matchIndex, lastMatchIndex;
 
             //Loop through each linting rule
-            lintingRules['LintingRules'].forEach(rule => {
+            lintingRules.forEach(rule => {
                 lastMatchIndex=-1;
 
                 //Loop through character match to the current linting rule
