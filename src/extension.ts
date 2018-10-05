@@ -74,7 +74,7 @@ export function activate(context: vscode.ExtensionContext) {
             //Loop through each regex match of a rule.
             while (match = regEx.exec(text)){
                 const startPos = activeEditor.document.positionAt(match.index);
-                const endPos = activeEditor.document.positionAt(match.index);
+                const endPos = activeEditor.document.positionAt(match.index + match[0].length);
                 let range = new vscode.Range(startPos, endPos);
                 let message = rule.message;
                 let diagnostic = new vscode.Diagnostic(range, message, vscode.DiagnosticSeverity.Warning);

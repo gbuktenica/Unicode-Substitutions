@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 1.2.1
+
+Stable Release.
+Fixed minor regression in linting.
+
 - 1.2.0
 
 Stable Release.
