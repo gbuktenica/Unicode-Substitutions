@@ -39,12 +39,12 @@
                         {
                             "invalid": "\\u2013",
                             "valid": "\\u002D",
-                            "message": "En Dash should be a Hyphen."
+                            "message": "En Dash should be a hyphen."
                         },
                         {
                             "invalid": "\\u2014",
                             "valid": "\\u002D",
-                            "message": "Em Dash should be a Hyphen"
+                            "message": "Em Dash should be a hyphen"
                         },
                         {
                             "invalid": "\\u201C",
