@@ -1,8 +1,8 @@
 {
     "name": "unicode-substitutions",
-    "displayName": "Unicode-Substitutions",
+    "displayName": "unicode-Substitutions",
     "description": "Corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
@@ -22,6 +22,54 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "contributes": {
+        "configuration": {
+            "title": "unicodesubsitutions configuration",
+            "type": "object",
+            "properties": {
+                "unicodesubsitutions.rules": {
+                    "description": "Array of paths for custom rules to include when linting",
+                    "scope": "window",
+                    "type": "array",
+                    "items": {
+                        "type": "array"
+                    },
+                    "default": [
+                        {
+                            "invalid": "\\u2013",
+                            "valid": "\\u002D",
+                            "message": "En dash should be a hyphen."
+                        },
+                        {
+                            "invalid": "\\u2014",
+                            "valid": "\\u002D",
+                            "message": "Em dash should be a hyphen"
+                        },
+                        {
+                            "invalid": "\\u201C",
+                            "valid": "\\u0022",
+                            "message": "Start double quotes should be straight double quotes"
+                        },
+                        {
+                            "invalid": "\\u201D",
+                            "valid": "\\u0022",
+                            "message": "End double quotes should be straight double quotes"
+                        },
+                        {
+                            "invalid": "\\u2018",
+                            "valid": "\\u0027",
+                            "message": "Start single quote should be straight single quote"
+                        },
+                        {
+                            "invalid": "\\u2019",
+                            "valid": "\\u0027",
+                            "message": "End single quote should be straight single quote"
+                        }
+                    ]
+                }
+            }
+        }
     },
     "devDependencies": {
         "vscode": "^1.1.17",
