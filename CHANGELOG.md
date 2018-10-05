@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 1.2.0
+
+Stable Release.
+Moved Rules to Package.json
+All rules in \uNNNN format to prevent extension linting itself.
+
 - 1.0.0
 
 Stable Release.
