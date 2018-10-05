@@ -1,8 +1,8 @@
 {
     "name": "unicode-substitutions",
-    "displayName": "Unicode-Substitutions",
+    "displayName": "unicode-Substitutions",
     "description": "Corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "1.0.1",
+    "version": "1.2.0",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
@@ -37,33 +37,33 @@
                     },
                     "default": [
                         {
-                            "invalid": "–",
-                            "valid": "-",
+                            "invalid": "\\u2013",
+                            "valid": "\\u002D",
                             "message": "En Dash should be a Hyphen."
                         },
                         {
-                            "invalid": "—",
-                            "valid": "-",
+                            "invalid": "\\u2014",
+                            "valid": "\\u002D",
                             "message": "Em Dash should be a Hyphen"
                         },
                         {
-                            "invalid": "“",
-                            "valid": "\"",
+                            "invalid": "\\u201C",
+                            "valid": "\\u0022",
                             "message": "Start double quotes should be straight double quotes"
                         },
                         {
-                            "invalid": "”",
-                            "valid": "\"",
+                            "invalid": "\\u201D",
+                            "valid": "\\u0022",
                             "message": "End double quotes should be straight double quotes"
                         },
                         {
-                            "invalid": "‘",
-                            "valid": "\"",
+                            "invalid": "\\u2018",
+                            "valid": "\\u0027",
                             "message": "Start single quote should be straight single quote"
                         },
                         {
-                            "invalid": "’",
-                            "valid": "\"",
+                            "invalid": "\\u2019",
+                            "valid": "\\u0027",
                             "message": "End single quote should be straight single quote"
                         }
                     ]
