@@ -30,7 +30,7 @@ Visual Studio code 1.27 or higher.
 
 ## Extension Settings
 
-N/A
+Linting rules are available for end user editing.
 
 ## Release Notes
 
