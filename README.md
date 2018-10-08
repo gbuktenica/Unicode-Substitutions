@@ -11,7 +11,7 @@ This Visual Studio Code extension will lint common unicode substitutions when co
 
 ## Features
 
-Lints the below Unicode:
+Lints the below Unicode by default:
 
 | Character Name     | Character | Unicode | Replace with | Character | Replace with Unicode |
 | ------------------ | --------- | ------- | ------------ | --------- | -------------------- |
@@ -30,11 +30,21 @@ Visual Studio code 1.27 or higher.
 
 ## Extension Settings
 
-Linting rules are available for end user editing.
+Linting rules are available for editing end user as per the below example:
 
-## Release Notes
+```json
+    "unicodesubsitutions.rules": [
+        {
+            "invalid": "\\u058A",
+            "valid": "\\u002D",
+            "message": "Armenian hyphen should be a hyphen."
+        }
+    ]
+```
 
-This is the first release.
+**Invalid** is the character the is be searched for by the linter in the format of a unicode escape sequence.  
+**Valid** is the character that will replace the invalid character during document formatting.  
+**Message** is the text that will appear in the problems window.
 
 ## Installation Guide
 
