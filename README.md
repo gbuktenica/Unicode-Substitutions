@@ -31,7 +31,7 @@ Visual Studio code 1.27 or higher.
 ## Extension Settings
 
 Linting rules can be added in the user and workspace settings.  
-The example shows how to add two rules to a setting.json file:
+The example shows how to add two linting rules to a setting.json file:
 
 ```json
     "unicodesubsitutions.rules": [

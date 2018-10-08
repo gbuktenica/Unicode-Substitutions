@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 1.3.1
+
+Stable Release.  
+Breaking change in README custom rule example.
+
 - 1.3.0
 
 Stable Release.  
