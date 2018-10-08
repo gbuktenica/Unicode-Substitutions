@@ -30,7 +30,8 @@ Visual Studio code 1.27 or higher.
 
 ## Extension Settings
 
-Linting rules are available for editing end user as per the below example:
+Linting rules can be added in the user and workspace settings.  
+The example shows how to add two rules to a setting.json file:
 
 ```json
     "unicodesubsitutions.rules": [
@@ -38,6 +39,11 @@ Linting rules are available for editing end user as per the below example:
             "invalid": "\\u058A",
             "valid": "\\u002D",
             "message": "Armenian hyphen should be a hyphen."
+        },
+        {
+            "invalid": "\\05BE",
+            "valid": "\\u002D",
+            "message": "Hebrew punctuation maqaf should be a hyphen."
         }
     ]
 ```
