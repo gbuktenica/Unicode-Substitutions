@@ -41,7 +41,7 @@ The example shows how to add two rules to a setting.json file:
             "message": "Armenian hyphen should be a hyphen."
         },
         {
-            "invalid": "\\05BE",
+            "invalid": "\\u05BE",
             "valid": "\\u002D",
             "message": "Hebrew punctuation maqaf should be a hyphen."
         }
