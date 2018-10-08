@@ -1,0 +1,34 @@
+{
+    "defaultRules": [
+        {
+            "invalid": "\\u2013",
+            "valid": "\\u002D",
+            "message": "En dash should be a hyphen."
+        },
+        {
+            "invalid": "\\u2014",
+            "valid": "\\u002D",
+            "message": "Em dash should be a hyphen"
+        },
+        {
+            "invalid": "\\u201C",
+            "valid": "\\u0022",
+            "message": "Start double quotes should be straight double quotes"
+        },
+        {
+            "invalid": "\\u201D",
+            "valid": "\\u0022",
+            "message": "End double quotes should be straight double quotes"
+        },
+        {
+            "invalid": "\\u2018",
+            "valid": "\\u0027",
+            "message": "Start single quote should be straight single quote"
+        },
+        {
+            "invalid": "\\u2019",
+            "valid": "\\u0027",
+            "message": "End single quote should be straight single quote"
+        }
+    ]
+}

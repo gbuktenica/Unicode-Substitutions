@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-
+import * as defaultRulesJson from "./defaultRules.json"
 let diagnosticCollection = null;
 diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
 
@@ -10,11 +10,14 @@ export function activate(context: vscode.ExtensionContext) {
     //
     // Common section
     //
+
     const supportedLanguages = ['*']
     let activeEditor = vscode.window.activeTextEditor;
-    // Read from workspace (Package.json, Settings.json etc)
+    // Read from workspace (Package.json, Settings.json etc) and default rule json.
     let lintingRules: Array<any> = [];
-    lintingRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.rules');
+    lintingRules = defaultRulesJson.defaultRules;
+    lintingRules = lintingRules.concat(vscode.workspace.getConfiguration().get('unicodesubsitutions.rules'));
+    console.log(lintingRules)
 
     function stringToRegex(string) {
         //Convert unicode string values to a regex global
@@ -63,7 +66,6 @@ export function activate(context: vscode.ExtensionContext) {
         if (!activeEditor) {
             return;
         }
-        console.log(lintingRules)
         const diagnostics = []
         let match
         const text = activeEditor.document.getText();

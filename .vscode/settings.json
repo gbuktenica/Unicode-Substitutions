@@ -1,0 +1,9 @@
+{
+    "unicodesubsitutions.rules": [
+        {
+            "invalid": "\\05BE",
+            "valid": "\\u002D",
+            "message": "Hebrew hyphen should be a hyphen."
+        }
+    ]
+}
