@@ -33,7 +33,7 @@
                     "scope": "window",
                     "type": "array",
                     "items": {
-                        "type": "array"
+                        "type": "string"
                     },
                     "default": [
                         {
