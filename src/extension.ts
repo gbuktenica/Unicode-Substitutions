@@ -13,10 +13,17 @@ export function activate(context: vscode.ExtensionContext) {
 
     const supportedLanguages = ['*']
     let activeEditor = vscode.window.activeTextEditor;
-    // Read from workspace (Package.json, Settings.json etc) and default rule json.
+
+    // Read from configuration from workspace (Package.json, Settings.json etc) and default rule json.
+    let enableDefaultRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableDefaultRules')
+    let enableFormatting = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableFormatting')
     let lintingRules: Array<any> = [];
-    lintingRules = defaultRulesJson.defaultRules;
-    lintingRules = lintingRules.concat(vscode.workspace.getConfiguration().get('unicodesubsitutions.rules'));
+    lintingRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.rules');
+    if (enableDefaultRules){
+        lintingRules = lintingRules.concat(defaultRulesJson.defaultRules);
+    }
+    console.log(enableDefaultRules)
+    console.log(enableFormatting)
     console.log(lintingRules)
 
     function stringToRegex(string) {
@@ -91,26 +98,28 @@ export function activate(context: vscode.ExtensionContext) {
     //
     // Formatter section
     //
-    vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
-        provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-            console.log(lintingRules)
-            let arrayText = []
-            const text = activeEditor.document.getText();
-            let match, matchIndex
-            //Loop through each linting rule
-            lintingRules.forEach(rule => {
-                let regEx = stringToRegex(rule.invalid)
-                let stringValid = unicodeToChar(rule.valid)
-                //Loop through character match to the current linting rule
-                while (match = regEx.exec(text)) {
-                    // Loop through each regex match.
-                    const startPos = activeEditor.document.positionAt(match.index);
-                    const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-                    let range = new vscode.Range(startPos, endPos)
-                    arrayText.push(vscode.TextEdit.replace(range, stringValid));
-                }
-            });
-            return arrayText
-        }
-    });
+    if (enableFormatting) {
+        vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
+            provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+                console.log(lintingRules)
+                let arrayText = []
+                const text = activeEditor.document.getText();
+                let match, matchIndex
+                //Loop through each linting rule
+                lintingRules.forEach(rule => {
+                    let regEx = stringToRegex(rule.invalid)
+                    let stringValid = unicodeToChar(rule.valid)
+                    //Loop through character match to the current linting rule
+                    while (match = regEx.exec(text)) {
+                        // Loop through each regex match.
+                        const startPos = activeEditor.document.positionAt(match.index);
+                        const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+                        let range = new vscode.Range(startPos, endPos)
+                        arrayText.push(vscode.TextEdit.replace(range, stringValid));
+                    }
+                });
+                return arrayText
+            }
+        });
+    }
 }

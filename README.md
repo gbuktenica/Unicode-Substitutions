@@ -30,8 +30,10 @@ Visual Studio code 1.27 or higher.
 
 ## Extension Settings
 
+### Custom linting rules
+
 Linting rules can be added in the user and workspace settings.  
-The example shows how to add two linting rules to a setting.json file:
+The example shows how to add two linting rules to a settings.json file:
 
 ```json
     "unicodesubsitutions.rules": [
@@ -51,6 +53,22 @@ The example shows how to add two linting rules to a setting.json file:
 **Invalid** is the character the is be searched for by the linter in the format of a unicode escape sequence.  
 **Valid** is the character that will replace the invalid character during document formatting.  
 **Message** is the text that will appear in the problems window.
+
+### Disable Default linting rules
+
+The default linting rules can be disabled so that you can use your own rules only instead of merging the two.
+
+```json
+    "unicodesubsitutions.enableDefaultRules": false,
+```
+
+### Disable Auto Document Formatting
+
+Auto document formatting can be disabled to prevent automatic changes to your document.
+
+```json
+    "unicodesubsitutions.enableFormatting": false
+```
 
 ## Installation Guide
 

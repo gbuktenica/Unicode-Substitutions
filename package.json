@@ -2,7 +2,7 @@
     "name": "unicode-substitutions",
     "displayName": "unicode-Substitutions",
     "description": "Lints and corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
@@ -42,6 +42,22 @@
                             "message": "Armenian hyphen should be a hyphen."
                         }
                     ]
+                },
+                "unicodesubsitutions.enableDefaultRules": {
+                    "description": "Enable or Disable linting using default rules",
+                    "type": [
+                        "boolean",
+                        "object"
+                    ],
+                    "default": true
+                },
+                "unicodesubsitutions.enableFormatting": {
+                    "description": "Enable or Disable formatting",
+                    "type": [
+                        "boolean",
+                        "object"
+                    ],
+                    "default": true
                 }
             }
         }
