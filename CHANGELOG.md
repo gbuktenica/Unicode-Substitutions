@@ -7,6 +7,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 - 1.4.0
 
 Stable Release.  
+Added issues link to package.json
+
+- 1.4.0
+
+Stable Release.  
 Added options to disable default rules and formatting.
 
 - 1.3.1
