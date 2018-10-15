@@ -5,16 +5,16 @@ diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDis
 
 // this method is called when vs code is activated
 export function activate(context: vscode.ExtensionContext) {
-
-    console.log('Unicode Substitutions is activated');
     //
     // Common section
     //
+    console.log('Unicode Substitutions is activated');
 
-    const supportedLanguages = ['*']
+    //Common definitions
     let activeEditor = vscode.window.activeTextEditor;
 
     // Read from configuration from workspace (Package.json, Settings.json etc) and default rule json.
+    let supportedLanguages = vscode.workspace.getConfiguration().get('unicodesubsitutions.enabledLanguageIds')
     let enableDefaultRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableDefaultRules')
     let enableFormatting = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableFormatting')
     let lintingRules: Array<any> = [];
@@ -22,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
     if (enableDefaultRules){
         lintingRules = lintingRules.concat(defaultRulesJson.defaultRules);
     }
+    console.log(supportedLanguages)
     console.log(enableDefaultRules)
     console.log(enableFormatting)
     console.log(lintingRules)
@@ -40,7 +41,50 @@ export function activate(context: vscode.ExtensionContext) {
                 return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
             });
     }
+    //
+    // Code Action section
+    //
+    const clickForInfo = "Click for more information about ";
+    vscode.languages.registerCodeActionsProvider(supportedLanguages, {
+        "provideCodeActions": provideCodeActions
+    });
 
+    function provideCodeActions(document, range, codeActionContext) {
+        const codeActions = [];
+        const diagnostics = codeActionContext.diagnostics || [];
+        // diagnostics
+        //     .filter((diagnostic) => diagnostic.source === "extensionDisplayName")
+        //     .forEach((diagnostic) => {
+        //         const ruleNameAlias = diagnostic.message.split(":")[0];
+        //         const ruleName = ruleNameAlias.split("/")[0];
+        //         // Provide code action for information about the violation
+        //         const infoTitle = clickForInfo + ruleNameAlias;
+        //         const infoAction = new vscode.CodeAction(infoTitle, vscode.CodeActionKind.QuickFix);
+        //         infoAction.command = {
+        //             "title": infoTitle,
+        //             "command": "vscode.open",
+        //             "arguments": [vscode.Uri.parse(diagnostic.code)]
+        //         };
+        //         infoAction.diagnostics = [diagnostic];
+        //         codeActions.push(infoAction);
+        //         // Provide code action to fix the violation
+        //         if (diagnostic.range.isSingleLine && fixFunctions[ruleName]) {
+        //             const fixTitle = clickToFix + ruleNameAlias;
+        //             const fixAction = new vscode.CodeAction(fixTitle, vscode.CodeActionKind.QuickFix);
+        //             fixAction.command = {
+        //                 "title": fixTitle,
+        //                 "command": fixLineCommandName,
+        //                 "arguments": [
+        //                     diagnostic.range,
+        //                     ruleName
+        //                 ]
+        //             };
+        //             fixAction.diagnostics = [diagnostic];
+        //             codeActions.push(fixAction);
+        //         }
+        //     });
+        return codeActions;
+    }
     //
     // Linting section
     //

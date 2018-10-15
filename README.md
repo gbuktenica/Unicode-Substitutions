@@ -51,7 +51,7 @@ The example shows how to add two linting rules to a settings.json file:
 ```
 
 **Invalid** is the character the is be searched for by the linter in the format of a unicode escape sequence.  
-**Valid** is the character that will replace the invalid character during document formatting.  
+**Valid** is the character that will replace the invalid character during document formatting or a code action.  
 **Message** is the text that will appear in the problems window.
 
 ### Disable Default linting rules

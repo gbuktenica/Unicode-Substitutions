@@ -4,7 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
-- 1.4.0
+- 2.0.0
+
+TBA
+
+- 1.4.1
 
 Stable Release.  
 Added issues link to package.json
