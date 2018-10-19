@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import * as defaultRulesJson from "./defaultRules.json"
+import LintingProvider from './actionProvider';
 let diagnosticCollection = null;
 diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
 
@@ -44,47 +45,10 @@ export function activate(context: vscode.ExtensionContext) {
     //
     // Code Action section
     //
-    const clickForInfo = "Click for more information about ";
-    vscode.languages.registerCodeActionsProvider(supportedLanguages, {
-        "provideCodeActions": provideCodeActions
-    });
+    let linter = new LintingProvider();
+    linter.activate(context.subscriptions);
+    vscode.languages.registerCodeActionsProvider('*', linter);
 
-    function provideCodeActions(document, range, codeActionContext) {
-        const codeActions = [];
-        const diagnostics = codeActionContext.diagnostics || [];
-        // diagnostics
-        //     .filter((diagnostic) => diagnostic.source === "extensionDisplayName")
-        //     .forEach((diagnostic) => {
-        //         const ruleNameAlias = diagnostic.message.split(":")[0];
-        //         const ruleName = ruleNameAlias.split("/")[0];
-        //         // Provide code action for information about the violation
-        //         const infoTitle = clickForInfo + ruleNameAlias;
-        //         const infoAction = new vscode.CodeAction(infoTitle, vscode.CodeActionKind.QuickFix);
-        //         infoAction.command = {
-        //             "title": infoTitle,
-        //             "command": "vscode.open",
-        //             "arguments": [vscode.Uri.parse(diagnostic.code)]
-        //         };
-        //         infoAction.diagnostics = [diagnostic];
-        //         codeActions.push(infoAction);
-        //         // Provide code action to fix the violation
-        //         if (diagnostic.range.isSingleLine && fixFunctions[ruleName]) {
-        //             const fixTitle = clickToFix + ruleNameAlias;
-        //             const fixAction = new vscode.CodeAction(fixTitle, vscode.CodeActionKind.QuickFix);
-        //             fixAction.command = {
-        //                 "title": fixTitle,
-        //                 "command": fixLineCommandName,
-        //                 "arguments": [
-        //                     diagnostic.range,
-        //                     ruleName
-        //                 ]
-        //             };
-        //             fixAction.diagnostics = [diagnostic];
-        //             codeActions.push(fixAction);
-        //         }
-        //     });
-        return codeActions;
-    }
     //
     // Linting section
     //
