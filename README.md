@@ -80,30 +80,8 @@ Auto document formatting can be disabled to prevent automatic changes to your do
 
 ### Manually Install
 
-1. In a command window open the extension folder.
+1. Clone this repo.
 
-    ```plaintext
-    cd %userprofile%\.vscode\extensions
-    ```
+1. Run install_local.cmd
 
-1. Clone this repository.
-
-    ```plaintext
-    git clone <REPO>
-    ```
-
-1. Open the subfolder Unicode-Substitutions.
-
-1. Install the dependencies
-
-    ```plaintext
-    npm install
-    ```
-
-1. Compile the dependencies.
-
-    ```plaintext
-    npm run compile
-    ```
-
-1. Restart Visual Studio code if it was open.
+1. Restart vscode if open.
