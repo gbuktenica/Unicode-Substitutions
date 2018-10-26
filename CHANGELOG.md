@@ -6,7 +6,8 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 - 2.0.0
 
-TBA
+Stable Release.  
+Added code actions so that individual violations can be fixed.
 
 - 1.4.1
 
