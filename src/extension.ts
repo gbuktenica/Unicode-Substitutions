@@ -152,11 +152,9 @@ function provideCodeActions(document, range, codeActionContext) {
     diagnostics
         .filter((diagnostic) => diagnostic.source === "Unicode Substitutions")
         .forEach((diagnostic) => {
-            // Provide code action for information about the violation
-            const clickToFix = "Click to fix this violation";
-            const vscode = require("vscode");
             // Provide code action to fix the violation
-            const fixTitle = clickToFix ;
+            const vscode = require("vscode");
+            const fixTitle = lintingRules[diagnostic.code].message
             const fixAction = new vscode.CodeAction(fixTitle, vscode.CodeActionKind.QuickFix);
             fixAction.command = {
                 "title": fixTitle,
