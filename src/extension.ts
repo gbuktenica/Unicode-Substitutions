@@ -174,8 +174,6 @@ function provideCodeActions(document, range, codeActionContext) {
 
 // Fixes violations of a rule on a line
 function fixLine(range, ruleName) {
-    console.log(lintingRules[ruleName].invalid)
-    console.log(lintingRules[ruleName].valid)
     let edit = new vscode.WorkspaceEdit();
     let stringValid = unicodeToChar(lintingRules[ruleName].valid)
     edit.replace(activeEditor.document.uri, range, stringValid);
