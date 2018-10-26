@@ -22,7 +22,7 @@ if (enableDefaultRules) {
 // Common functions
 //
 function stringToRegex(string) {
-    //Convert unicode string values to a regex global
+    //Convert unicode string values to a regex global object
     let regex = new RegExp(string, 'g');
     return regex
 }
@@ -36,13 +36,13 @@ function unicodeToChar(text) {
         });
 }
 //
-// This method is called when vs code is activated
+// This method is called when Visual Studio Code is activated
 //
 export function activate(context: vscode.ExtensionContext) {
     console.log('Unicode Substitutions is activated');
 
     //
-    // Code Action Section
+    // Code Action Provider Section
     //
 
     // Register Code Action Provider
@@ -108,14 +108,16 @@ export function activate(context: vscode.ExtensionContext) {
             }
             ruleIndex ++
         });
-        // Push diagnostics to VS Code
+        // Push diagnostics to Visual Studio Code
         diagnosticCollection.set(activeEditor.document.uri, diagnostics);
     }
 
     //
-    // Document Formatter section (Alt + Shift +F)
+    // Document Formatter section
     //
+
     if (enableFormatting) {
+        // Formats the whole document when triggered by "Format Document"
         vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
             provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
                 console.log(lintingRules)
@@ -145,7 +147,7 @@ export function activate(context: vscode.ExtensionContext) {
 // Code Actions
 //
 
-// Implements CodeActionsProvider.provideCodeActions to provide information and fix rule violations
+// Provides the light bulb on individual violations.
 function provideCodeActions(document, range, codeActionContext) {
     const codeActions = [];
     const diagnostics = codeActionContext.diagnostics || [];
@@ -170,9 +172,10 @@ function provideCodeActions(document, range, codeActionContext) {
     return codeActions;
 }
 
-// Fixes violations of a rule on a line
+// Fixes individual linting violations when the light bulb is clicked.
 function fixLine(range, ruleName) {
     let edit = new vscode.WorkspaceEdit();
+    // Read linting fix from Linting Rules array
     let stringValid = unicodeToChar(lintingRules[ruleName].valid)
     edit.replace(activeEditor.document.uri, range, stringValid);
     return vscode.workspace.applyEdit(edit);
