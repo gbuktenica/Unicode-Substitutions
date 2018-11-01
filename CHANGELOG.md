@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.0.1
+
+Stable Release.  
+Added format on paste.
+
 - 2.0.0
 
 Stable Release.  

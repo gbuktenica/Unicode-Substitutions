@@ -70,6 +70,14 @@ Auto document formatting can be disabled to prevent automatic changes to your do
     "unicodesubsitutions.enableFormatting": false
 ```
 
+### Disable Auto Document Formatting on Paste
+
+Auto document formatting on pasting can be disabled to prevent automatic changes to your pasted content.
+
+```json
+    "unicodesubsitutions.enableFormatOnPaste": false
+```
+
 ## Installation Guide
 
 ### Install from the Market Place

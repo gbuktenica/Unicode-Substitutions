@@ -2,7 +2,7 @@
     "name": "unicode-substitutions",
     "displayName": "unicode-Substitutions",
     "description": "Lints and corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
@@ -57,6 +57,14 @@
                 },
                 "unicodesubsitutions.enableFormatting": {
                     "description": "Enable or Disable formatting",
+                    "type": [
+                        "boolean",
+                        "object"
+                    ],
+                    "default": true
+                },
+                "unicodesubsitutions.enableFormatOnPaste": {
+                    "description": "Enable or Disable formatting pasted code",
                     "type": [
                         "boolean",
                         "object"
