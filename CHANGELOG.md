@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.0.1
+
+Stable Release.  
+Pinned event-stream to 3.3.4 due to malicious code in 3.3.6.  
+<https://github.com/dominictarr/event-stream/issues/116>
+
 - 2.0.0
 
 Stable Release.  
