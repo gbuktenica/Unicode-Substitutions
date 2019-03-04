@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.1.0
+
+Stable Release.  
+Implemented Format Selection <https://github.com/gbuktenica/Unicode-Substitutions/issues/2>
+Updated libraries <https://nvd.nist.gov/vuln/detail/CVE-2018-16491>
+
 - 2.0.1
 
 Stable Release.  
