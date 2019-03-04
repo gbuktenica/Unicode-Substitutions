@@ -65,7 +65,7 @@
                 },
                 "unicodesubsitutions.enabledLanguageIds": {
                     "type": "array",
-                    "scope": "resource",
+                    "scope": "window",
                     "items": {
                         "type": "string"
                     },
