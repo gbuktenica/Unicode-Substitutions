@@ -1,6 +1,6 @@
 # Prerequisites
 choco install nodejs.install
-npm install vsce
+npm install -g vsce
 
 # Package
 npm install
@@ -9,3 +9,6 @@ code --install-extension unicode-substitutions-2.0.0.vsix
 
 # Update
 npm audit fix
+
+# Publish
+vsce publish
