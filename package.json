@@ -2,7 +2,7 @@
     "name": "unicode-substitutions",
     "displayName": "unicode-Substitutions",
     "description": "Lints and corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "2.0.1",
+    "version": "2.1.1",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
