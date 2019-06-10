@@ -4,6 +4,17 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.1.1
+
+Stable Release.  
+Bug fixes WS-2019-0100 and [CVE-2018-20834](https://nvd.nist.gov/vuln/detail/CVE-2018-20834).
+
+- 2.1.0
+
+Stable Release.  
+Bug fix [CVE-2018-16491](https://nvd.nist.gov/vuln/detail/CVE-2018-16491)
+Prevision for Format Library.
+
 - 2.0.0
 
 Stable Release.  
