@@ -78,7 +78,6 @@
         }
     },
     "dependencies": {
-        "event-stream": "3.3.4",
         "node.extend": ">=1.1.7"
     },
     "devDependencies": {
