@@ -2,7 +2,7 @@
     "name": "unicode-substitutions",
     "displayName": "unicode-Substitutions",
     "description": "Lints and corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
@@ -80,7 +80,9 @@
     "devDependencies": {
         "vscode": "^1.1.17",
         "typescript": "^3.0.3",
-        "@types/node": "7.0.4"
+        "@types/node": "7.0.4",
+        "fstream": ">=1.0.12",
+        "tar": ">=2.2.2"
     },
     "repository": {
         "type": "git",
