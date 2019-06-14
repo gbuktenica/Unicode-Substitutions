@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.1.2
+
+Stable Release.  
+Bug fix WS-2018-0590.
+
 - 2.1.1
 
 Stable Release.  
