@@ -80,16 +80,8 @@ Auto document formatting on pasting can be disabled to prevent automatic changes
 
 ## Installation Guide
 
-### Install from the Market Place
+### Install from the Marketplace
 
 1. Open Extensions (Control + Shift + X)
 
 1. Search for "Unicode-Substitutions"
-
-### Manually Install
-
-1. Clone this repo.
-
-1. Run install_local.cmd
-
-1. Restart vscode if open.
