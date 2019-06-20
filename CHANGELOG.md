@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.0
+
+Stable Release.  
+Format Selection feature added.
+
 - 2.1.2
 
 Stable Release.  
