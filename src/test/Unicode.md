@@ -2,14 +2,15 @@
 
 This table contains all of the unicode characters that are in the default rules.
 
-| Character Name             | Character | Unicode | Replace with | Character | Replace with Unicode |
-| -------------------------- | --------- | ------- | ------------ | --------- | -------------------- |
-| En Dash                    | –         | \\u2013 | Hyphen       | -         | \\u002D              |
-| Em Dash                    | —         | \\u2014 | Hyphen       | -         | \\u002D              |
-| Start Double Quote         | “         | \\u201C | Double Quote | "         | \\u0022              |
-| End Double Quote           | ”         | \\u201D | Double Quote | "         | \\u0022              |
-| Start Single Quote         | ‘         | \\u2018 | Single Quote | '         | \\u0027              |
-| End Single Quote           | ’         | \\u2019 | Single Quote | '         | \\u0027              |
+| Character Name                                   | Character | Unicode  | Replace with | Character | Replace with Unicode |
+|--------------------------------------------------|-----------|----------|--------------|-----------|----------------------|
+| En Dash                                          | –         | \\u2013  | Hyphen       | -         | \\u002D              |
+| Em Dash                                          | —         | \\u2014  | Hyphen       | -         | \\u002D              |
+| Start Double Quote                               | “         | \\u201C  | Double Quote | "         | \\u0022              |
+| End Double Quote                                 | ”         | \\u201D  | Double Quote | "         | \\u0022              |
+| Start Single Quote                               | ‘         | \\u2018  | Single Quote | '         | \\u0027              |
+| End Single Quote                                 | ’         | \\u2019  | Single Quote | '         | \\u0027              |
+| Smiling face with smiling eyes should be a colon | 😊        | \\u1F60A | Colon        | :         | \\u003A              |
 
 This table contains characters that are in the package json as example end user rules.
 
