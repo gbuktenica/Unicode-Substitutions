@@ -140,6 +140,31 @@ export function activate(context: vscode.ExtensionContext) {
                 return arrayText
             }
         });
+        vscode.languages.registerDocumentRangeFormattingEditProvider(supportedLanguages, {
+            provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]>{
+                let edits: vscode.TextEdit[] = [];
+                const text = document.getText();
+                let match
+                //Loop through each linting rule
+                lintingRules.forEach(rule => {
+                    let regEx = stringToRegex(rule.invalid)
+                    let stringValid = unicodeToChar(rule.valid)
+                    //Loop through character match to the current linting rule
+                    while (match = regEx.exec(text)) {
+                        // Loop through each regex match.
+                        const startPos = document.positionAt(match.index);
+                        if (range.start.isBeforeOrEqual(startPos)) {
+                            const endPos = document.positionAt(match.index + match[0].length);
+                            if (range.end.isAfterOrEqual(endPos)) {
+                                let newRange = new vscode.Range(startPos, endPos)
+                                edits.push(vscode.TextEdit.replace(newRange, stringValid));
+                            }
+                        }
+                    }
+                });
+                return edits
+            }
+        });
     }
 }
 
