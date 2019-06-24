@@ -60,3 +60,7 @@ Push the updated extension to the marketplace. This must be done by the organisa
 ```Command
 vsce publish <TOKEN>
 ```
+
+Manually if required
+
+<http://marketplace.visualstudio.com/manage/publishers/glenbuktenica>
