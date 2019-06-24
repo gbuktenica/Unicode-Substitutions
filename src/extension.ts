@@ -121,8 +121,8 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
             provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
                 console.log(lintingRules)
-                let arrayText = []
-                const text = activeEditor.document.getText();
+                let edits: vscode.TextEdit[] = [];
+                const text = document.getText();
                 let match
                 //Loop through each linting rule
                 lintingRules.forEach(rule => {
@@ -131,13 +131,13 @@ export function activate(context: vscode.ExtensionContext) {
                     //Loop through character match to the current linting rule
                     while (match = regEx.exec(text)) {
                         // Loop through each regex match.
-                        const startPos = activeEditor.document.positionAt(match.index);
-                        const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+                        const startPos = document.positionAt(match.index);
+                        const endPos = document.positionAt(match.index + match[0].length);
                         let range = new vscode.Range(startPos, endPos)
-                        arrayText.push(vscode.TextEdit.replace(range, stringValid));
+                        edits.push(vscode.TextEdit.replace(range, stringValid));
                     }
                 });
-                return arrayText
+                return edits
             }
         });
         vscode.languages.registerDocumentRangeFormattingEditProvider(supportedLanguages, {
@@ -153,8 +153,10 @@ export function activate(context: vscode.ExtensionContext) {
                     while (match = regEx.exec(text)) {
                         // Loop through each regex match.
                         const startPos = document.positionAt(match.index);
+                        //Make sure edits are only done inside the range.
                         if (range.start.isBeforeOrEqual(startPos)) {
                             const endPos = document.positionAt(match.index + match[0].length);
+                            //Make sure edits are only done inside the range.
                             if (range.end.isAfterOrEqual(endPos)) {
                                 let newRange = new vscode.Range(startPos, endPos)
                                 edits.push(vscode.TextEdit.replace(newRange, stringValid));
