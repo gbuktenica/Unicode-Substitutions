@@ -11,6 +11,11 @@
             "message": "Em dash should be a hyphen"
         },
         {
+            "invalid": "\\u2015",
+            "valid": "\\u002D",
+            "message": "Horizontal Bar should be a hyphen"
+        },
+        {
             "invalid": "\\u201C",
             "valid": "\\u0022",
             "message": "Start double quotes should be straight double quotes"

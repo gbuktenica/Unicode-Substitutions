@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.1
+
+Stable Release.  
+Feature Request 4, add default rule for Horizontal Bar.
+<https://github.com/gbuktenica/Unicode-Substitutions/issues/4>
+
 - 2.2.0
 
 Stable Release.  
