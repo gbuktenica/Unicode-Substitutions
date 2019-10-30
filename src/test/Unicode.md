@@ -6,6 +6,7 @@ This table contains all of the unicode characters that are in the default rules.
 |--------------------------------------------------|-----------|----------|--------------|-----------|----------------------|
 | En Dash                                          | –         | \\u2013  | Hyphen       | -         | \\u002D              |
 | Em Dash                                          | —         | \\u2014  | Hyphen       | -         | \\u002D              |
+| Horizontal Bar                                   | ―         | \\u2015  | Hyphen       | -         | \\u002D              |
 | Start Double Quote                               | “         | \\u201C  | Double Quote | "         | \\u0022              |
 | End Double Quote                                 | ”         | \\u201D  | Double Quote | "         | \\u0022              |
 | Start Single Quote                               | ‘         | \\u2018  | Single Quote | '         | \\u0027              |
