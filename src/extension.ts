@@ -41,10 +41,6 @@ function unicodeToChar(text) {
 export function activate(context: vscode.ExtensionContext) {
     console.log('Unicode Substitutions is activated');
 
-    //
-    // Code Action Provider Section
-    //
-
     // Register Code Action Provider
     context.subscriptions.push(
         vscode.languages.registerCodeActionsProvider(documentSelector, {
@@ -55,6 +51,21 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.commands.registerCommand(fixLineCommandName, fixLine)
     );
+
+    // Register Formatters
+    if (enableFormatting) {
+        // Formats the whole document when triggered by "Format Document"
+        vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
+            provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+                return formatDocument(context, document, null)
+            }
+        });
+        vscode.languages.registerDocumentRangeFormattingEditProvider(supportedLanguages, {
+            provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]> {
+                return formatDocument(context, document, range)
+            }
+        });
+    }
     //
     // Linting section
     //
@@ -110,21 +121,6 @@ export function activate(context: vscode.ExtensionContext) {
         });
         // Push diagnostics to Visual Studio Code
         diagnosticCollection.set(activeEditor.document.uri, diagnostics);
-    }
-
-    // Document Formatter registration
-    if (enableFormatting) {
-        // Formats the whole document when triggered by "Format Document"
-        vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
-            provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-                return formatDocument(context, document, null)
-            }
-        });
-        vscode.languages.registerDocumentRangeFormattingEditProvider(supportedLanguages, {
-            provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]>{
-                return formatDocument(context, document, range)
-            }
-        });
     }
 }
 
