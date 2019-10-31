@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.2
+
+Stable Release.
+Refactoring to move code out of activate.
+
 - 2.2.1
 
 Stable Release.  
