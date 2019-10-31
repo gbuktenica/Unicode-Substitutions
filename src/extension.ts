@@ -5,8 +5,8 @@ diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDis
 const fixLineCommandName = "unicodesubsitutions.fixLine";
 let activeEditor = vscode.window.activeTextEditor;
 const documentSelector = {
-    "language": '*',
-    "scheme": '*'
+    "scheme": 'file',
+    "language": '*'
 };
 // Read from configuration from workspace (Package.json, Settings.json etc) and default rule json.
 let supportedLanguages = vscode.workspace.getConfiguration().get('unicodesubsitutions.enabledLanguageIds');
@@ -18,26 +18,8 @@ if (enableDefaultRules) {
     lintingRules = lintingRules.concat(defaultRulesJson.defaultRules);
 }
 
-//
-// Common functions
-//
-function stringToRegex(string) {
-    //Convert unicode string values to a regex global object
-    let regex = new RegExp(string, 'g');
-    return regex
-}
 
-function unicodeToChar(text) {
-    //Convert a \u representation to a unicode string
-    // e.g. convert \u002D to -
-    return text.replace(/\\u[\dA-F]{4}/gi,
-        function (match) {
-            return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
-        });
-}
-//
 // This method is called when Visual Studio Code is activated
-//
 export function activate(context: vscode.ExtensionContext) {
     console.log('Unicode Substitutions is activated');
 
@@ -66,66 +48,42 @@ export function activate(context: vscode.ExtensionContext) {
             }
         });
     }
-    //
-    // Linting section
-    //
-    if (activeEditor) {
-        triggerupdateLinting();
-    }
 
+    // Register Linting
+    if (activeEditor) {
+        updateLinting(context);
+    }
     vscode.window.onDidChangeActiveTextEditor(editor => {
         activeEditor = editor;
         if (editor) {
-            triggerupdateLinting();
+            updateLinting(context);
         }
     }, null, context.subscriptions);
 
     vscode.workspace.onDidChangeTextDocument(event => {
         if (activeEditor && event.document === activeEditor.document) {
-            triggerupdateLinting();
+            updateLinting(context);
         }
     }, null, context.subscriptions);
-
-    var timeout = null;
-    function triggerupdateLinting() {
-        if (timeout) {
-            clearTimeout(timeout);
-        }
-        timeout = setTimeout(updateLinting, 500);
-    }
-
-    function updateLinting() {
-        if (!activeEditor) {
-            return;
-        }
-        const diagnostics = []
-        let match
-        const text = activeEditor.document.getText();
-        context.subscriptions.push(diagnosticCollection);
-        //Loop through each linting rule
-        let ruleIndex = 0
-        lintingRules.forEach(rule => {
-            let regEx = stringToRegex(rule.invalid)
-            //Loop through each regex match of a rule.
-            while (match = regEx.exec(text)){
-                const startPos = activeEditor.document.positionAt(match.index);
-                const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-                let range = new vscode.Range(startPos, endPos);
-                let message = rule.message;
-                let diagnostic = new vscode.Diagnostic(range, message, vscode.DiagnosticSeverity.Warning);
-                diagnostic.code = ruleIndex;
-                diagnostic.source = "Unicode Substitutions";
-                diagnostics.push(diagnostic);
-            }
-            ruleIndex ++
-        });
-        // Push diagnostics to Visual Studio Code
-        diagnosticCollection.set(activeEditor.document.uri, diagnostics);
-    }
 }
 
-// Document Formatting
+function stringToRegex(string) {
+    //Convert unicode string values to a regex global object
+    let regex = new RegExp(string, 'g');
+    return regex
+}
+
+function unicodeToChar(text) {
+    //Convert a \u representation to a unicode string
+    // e.g. convert \u002D to -
+    return text.replace(/\\u[\dA-F]{4}/gi,
+        function (match) {
+            return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
+        });
+}
+
 export function formatDocument(context: vscode.ExtensionContext, document: vscode.TextDocument, range: vscode.Range){
+    // Document Formatting
     if (range === null) {
         let start = new vscode.Position(0, 0);
         let end = new vscode.Position(document.lineCount - 1, document.lineAt(document.lineCount - 1).text.length);
@@ -150,12 +108,40 @@ export function formatDocument(context: vscode.ExtensionContext, document: vscod
     });
     return edits
 }
-//
-// Code Actions
-//
 
-// Provides the light bulb on individual violations.
+function updateLinting(context) {
+    // Lint the document and push diagnostics to Visual Studio Code
+    if (!activeEditor) {
+        return;
+    }
+    //console.log('Unicode Substitutions linting has started');
+    const diagnostics = []
+    let match
+    const text = activeEditor.document.getText();
+    context.subscriptions.push(diagnosticCollection);
+    //Loop through each linting rule
+    let ruleIndex = 0
+    lintingRules.forEach(rule => {
+        let regEx = stringToRegex(rule.invalid)
+        //Loop through each regex match of a rule.
+        while (match = regEx.exec(text)) {
+            const startPos = activeEditor.document.positionAt(match.index);
+            const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+            let range = new vscode.Range(startPos, endPos);
+            let message = rule.message;
+            let diagnostic = new vscode.Diagnostic(range, message, vscode.DiagnosticSeverity.Warning);
+            diagnostic.code = ruleIndex;
+            diagnostic.source = "Unicode Substitutions";
+            diagnostics.push(diagnostic);
+        }
+        ruleIndex++
+    });
+    // Push diagnostics to Visual Studio Code
+    diagnosticCollection.set(activeEditor.document.uri, diagnostics);
+}
+
 function provideCodeActions(document, range, codeActionContext) {
+    // Provide the light bulb on individual violations.
     const codeActions = [];
     const diagnostics = codeActionContext.diagnostics || [];
     diagnostics
@@ -179,8 +165,8 @@ function provideCodeActions(document, range, codeActionContext) {
     return codeActions;
 }
 
-// Fixes individual linting violations when the light bulb is clicked.
 function fixLine(range, ruleName) {
+    // Fixes individual linting violations when the light bulb is clicked.
     let edit = new vscode.WorkspaceEdit();
     // Read linting fix from Linting Rules array
     let stringValid = unicodeToChar(lintingRules[ruleName].valid)
