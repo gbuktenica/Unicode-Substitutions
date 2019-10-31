@@ -4,14 +4,14 @@ let diagnosticCollection = null;
 diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
 const fixLineCommandName = "unicodesubsitutions.fixLine";
 let activeEditor = vscode.window.activeTextEditor;
-const documentSelector = {
-    "scheme": 'file',
-    "language": '*'
-};
 // Read from configuration from workspace (Package.json, Settings.json etc) and default rule json.
 let supportedLanguages = vscode.workspace.getConfiguration().get('unicodesubsitutions.enabledLanguageIds');
 let enableDefaultRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableDefaultRules');
 let enableFormatting = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableFormatting');
+let documentSelector = {
+    "scheme": 'file',
+    "file": supportedLanguages
+};
 let lintingRules: Array<any> = [];
 lintingRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.rules');
 if (enableDefaultRules) {
@@ -37,12 +37,12 @@ export function activate(context: vscode.ExtensionContext) {
     // Register Formatters
     if (enableFormatting) {
         // Formats the whole document when triggered by "Format Document"
-        vscode.languages.registerDocumentFormattingEditProvider(supportedLanguages, {
+        vscode.languages.registerDocumentFormattingEditProvider(documentSelector, {
             provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
                 return formatDocument(context, document, null)
             }
         });
-        vscode.languages.registerDocumentRangeFormattingEditProvider(supportedLanguages, {
+        vscode.languages.registerDocumentRangeFormattingEditProvider(documentSelector, {
             provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]> {
                 return formatDocument(context, document, range)
             }
