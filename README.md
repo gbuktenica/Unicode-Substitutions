@@ -35,13 +35,13 @@ The example shows how to add two linting rules to a settings.json file:
 ```json
     "unicodesubsitutions.rules": [
         {
-            "invalid": "   058A",
-            "valid": "   002D",
+            "invalid": "\\u058A",
+            "valid": "\\u002D",
             "message": "Armenian hyphen should be a hyphen."
         },
         {
-            "invalid": "   05BE",
-            "valid": "   002D",
+            "invalid": "\\u05BE",
+            "valid": "\\u002D",
             "message": "Hebrew punctuation maqaf should be a hyphen."
         }
     ]
