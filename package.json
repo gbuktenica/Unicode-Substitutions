@@ -63,14 +63,6 @@
                     ],
                     "default": true
                 },
-                "unicodesubsitutions.enableFormatOnPaste": {
-                    "description": "Enable or Disable formatting pasted code",
-                    "type": [
-                        "boolean",
-                        "object"
-                    ],
-                    "default": true
-                },
                 "unicodesubsitutions.enabledLanguageIds": {
                     "type": "array",
                     "scope": "window",
