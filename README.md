@@ -15,13 +15,13 @@ Lints the below Unicode by default:
 
 | Character Name     | Character | Unicode | Replace with | Character | Replace with Unicode |
 | ------------------ | --------- | ------- | ------------ | --------- | -------------------- |
-| En Dash            | –         | \\u2013 | Hyphen       | -         | \\u002D              |
-| Em Dash            | —         | \\u2014 | Hyphen       | -         | \\u002D              |
-| Horizontal Bar     | ―         | \\u2015 | Hyphen       | -         | \\u002D              |
-| Start Double Quote | “         | \\u201C | Double Quote | "         | \\u0022              |
-| End Double Quote   | ”         | \\u201D | Double Quote | "         | \\u0022              |
-| Start Single Quote | ‘         | \\u2018 | Single Quote | '         | \\u0027              |
-| End Single Quote   | ’         | \\u2019 | Single Quote | '         | \\u0027              |
+| En Dash            | –         | 2013    | Hyphen       | -         | 002D                 |
+| Em Dash            | —         | 2014    | Hyphen       | -         | 002D                 |
+| Horizontal Bar     | ―         | 2015    | Hyphen       | -         | 002D                 |
+| Start Double Quote | “         | 201C    | Double Quote | "         | 0022                 |
+| End Double Quote   | ”         | 201D    | Double Quote | "         | 0022                 |
+| Start Single Quote | ‘         | 2018    | Single Quote | '         | 0027                 |
+| End Single Quote   | ’         | 2019    | Single Quote | '         | 0027                 |
 
 Format Document (Alt + Shift + F) is supported for all languages.
 
@@ -35,13 +35,13 @@ The example shows how to add two linting rules to a settings.json file:
 ```json
     "unicodesubsitutions.rules": [
         {
-            "invalid": "\\u058A",
-            "valid": "\\u002D",
+            "invalid": "   058A",
+            "valid": "   002D",
             "message": "Armenian hyphen should be a hyphen."
         },
         {
-            "invalid": "\\u05BE",
-            "valid": "\\u002D",
+            "invalid": "   05BE",
+            "valid": "   002D",
             "message": "Hebrew punctuation maqaf should be a hyphen."
         }
     ]
