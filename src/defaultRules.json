@@ -44,6 +44,16 @@
             "invalid": "\\u201F",
             "valid": "\\u0022",
             "message": "High double quotes should be straight double quotes"
+        },
+        {
+            "invalid": "\\uD83D\\uDE42",
+            "valid": "\\u003A\\u0029",
+            "message": "Slightly smiling face should be a colon and parentheses"
+        },
+        {
+            "invalid": "\\uD83D\\uDE0A",
+            "valid": "\\u003A\\u0029",
+            "message": "Smiling face with smiling eyes should be a colon and parentheses"
         }
     ]
 }

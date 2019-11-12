@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.4
+
+Stable Release.
+Additional default rules for emoticons.
+Note: Regex for Unicode higher than FFFF need to be surrogate pairs.
+
 - 2.2.3
 
 Stable Release.
