@@ -16,6 +16,16 @@
             "message": "Horizontal Bar should be a hyphen"
         },
         {
+            "invalid": "\\u2018",
+            "valid": "\\u0027",
+            "message": "Start single quote should be straight single quote"
+        },
+        {
+            "invalid": "\\u2019",
+            "valid": "\\u0027",
+            "message": "End single quote should be straight single quote"
+        },
+        {
             "invalid": "\\u201C",
             "valid": "\\u0022",
             "message": "Start double quotes should be straight double quotes"
@@ -26,14 +36,14 @@
             "message": "End double quotes should be straight double quotes"
         },
         {
-            "invalid": "\\u2018",
-            "valid": "\\u0027",
-            "message": "Start single quote should be straight single quote"
+            "invalid": "\\u201E",
+            "valid": "\\u0022",
+            "message": "Low double quotes should be straight double quotes"
         },
         {
-            "invalid": "\\u2019",
-            "valid": "\\u0027",
-            "message": "End single quote should be straight single quote"
+            "invalid": "\\u201F",
+            "valid": "\\u0022",
+            "message": "High double quotes should be straight double quotes"
         }
     ]
 }

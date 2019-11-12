@@ -11,19 +11,25 @@ This Visual Studio Code extension will lint common unicode substitutions when co
 
 ## Features
 
-Lints the below Unicode by default:
+Lints the below Unicode substitutions by default:
 
 | Character Name     | Character | Unicode | Replace with | Character | Replace with Unicode |
-| ------------------ | --------- | ------- | ------------ | --------- | -------------------- |
+|--------------------|-----------|---------|--------------|-----------|----------------------|
 | En Dash            | –         | 2013    | Hyphen       | -         | 002D                 |
 | Em Dash            | —         | 2014    | Hyphen       | -         | 002D                 |
 | Horizontal Bar     | ―         | 2015    | Hyphen       | -         | 002D                 |
-| Start Double Quote | “         | 201C    | Double Quote | "         | 0022                 |
-| End Double Quote   | ”         | 201D    | Double Quote | "         | 0022                 |
 | Start Single Quote | ‘         | 2018    | Single Quote | '         | 0027                 |
 | End Single Quote   | ’         | 2019    | Single Quote | '         | 0027                 |
+| Start Double Quote | “         | 201C    | Double Quote | "         | 0022                 |
+| End Double Quote   | ”         | 201D    | Double Quote | "         | 0022                 |
+| Low Double Quote   | „         | 201E    | Double Quote | "         | 0022                 |
+| High Double Quote  | ‟         | 201F    | Double Quote | "         | 0022                 |
 
 Format Document (Alt + Shift + F) is supported for all languages.
+
+### Multiple formatter support
+
+[With the 1.33 release](https://code.visualstudio.com/updates/v1_33#_default-formatter-selection) of Visual Studio Code multiple document formatters are supported. These cannot be run synchronously but must be triggered separately using **Format Document with**.
 
 ## Extension Settings
 

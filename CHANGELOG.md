@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.3
+
+Stable Release.
+Additional default rules for high and low double quotes.
+Tests for multi formatter support.
+
 - 2.2.2
 
 Stable Release.

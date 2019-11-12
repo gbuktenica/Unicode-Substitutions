@@ -5,5 +5,6 @@ typings/**
 **/*.ts
 **/*.map
 .gitignore
+.gitattributes
 tsconfig.json
-vsc-extension-quickstart.md
+src/test/**
