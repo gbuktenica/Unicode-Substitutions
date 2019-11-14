@@ -18,9 +18,9 @@
   "sourceBin" : [
     {
       "id" : 1,
-      "src" : "\\\\ra\\profiles\\glen\\Documents\\Camtasia\\Rec 11-14-19_002.trec",
+      "src" : "C:\\Users\\glen\\.source\\Unicode-Substitutions\\images\\Camtasia\\Rec 11-14-19_002.trec",
       "rect" : [0, 0, 936, 300],
-      "lastMod" : "20191114T054747",
+      "lastMod" : "20191114T054746",
       "sourceTracks" : [
         {
           "range" : [0, 481],
@@ -42,7 +42,7 @@
     "sceneTrack" : {
       "scenes" : [
         {
-          "duration" : 14.3333333333333,
+          "duration" : 14.2666666666667,
           "title" : "",
           "type" : "",
           "csml" : {
@@ -75,14 +75,70 @@
                           "effectName" : "LeftClickRings",
                           "category" : "categoryCursorEffects",
                           "parameters" : {
-                            "clickDuration" : 1.25,
-                            "color-alpha" : 1.0,
-                            "color-blue" : 0.0,
-                            "color-green" : 0.0,
-                            "color-red" : 1.0,
+                            "clickDuration" : {
+                              "type" : "double",
+                              "defaultValue" : 1.25,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-alpha" : {
+                              "type" : "double",
+                              "defaultValue" : 1.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-blue" : {
+                              "type" : "double",
+                              "defaultValue" : 0.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-green" : {
+                              "type" : "double",
+                              "defaultValue" : 0.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-red" : {
+                              "type" : "double",
+                              "defaultValue" : 1.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
                             "postClickPercent" : 100.0,
-                            "radius" : 50.0,
-                            "scale" : 0.5
+                            "radius" : {
+                              "type" : "double",
+                              "defaultValue" : 50.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "scale" : {
+                              "type" : "double",
+                              "defaultValue" : 0.5,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            }
                           }
                         }
                     ],
@@ -135,7 +191,7 @@
                             },
                             "color-alpha" : {
                               "type" : "double",
-                              "defaultValue" : 0.75,
+                              "defaultValue" : 0.475,
                               "interp" : "linr",
                               "uiHints" : {
                                 "userInterfaceType" : 0,
@@ -171,7 +227,7 @@
                             },
                             "radius" : {
                               "type" : "double",
-                              "defaultValue" : 50.0,
+                              "defaultValue" : 16.6666666666667,
                               "interp" : "linr",
                               "uiHints" : {
                                 "userInterfaceType" : 0,
@@ -288,9 +344,114 @@
                         }
                     ],
                     "start" : 9,
-                    "duration" : 421,
+                    "duration" : 410,
                     "mediaStart" : 39,
-                    "mediaDuration" : 421,
+                    "mediaDuration" : 410,
+                    "scalar" : 1,
+                    "metadata" : {
+                      "AutoAppliedSmartFocus" : "False",
+                      "clipSpeedAttribute" : false
+                    },
+                    "animationTracks" : {
+
+                    }
+                  },
+                  {
+                    "id" : 5,
+                    "_type" : "ScreenVMFile",
+                    "src" : 1,
+                    "trackNumber" : 0,
+                    "attributes" : {
+                      "ident" : "Rec 11-14-19_002"
+                    },
+                    "parameters" : {
+                      "cursorScale" : {
+                        "type" : "double",
+                        "defaultValue" : 1.0,
+                        "interp" : "linr"
+                      },
+                      "cursorOpacity" : {
+                        "type" : "double",
+                        "defaultValue" : 1.0,
+                        "interp" : "linr"
+                      }
+                    },
+                    "effects" : [
+                        {
+                          "effectName" : "LeftClickRings",
+                          "category" : "categoryCursorEffects",
+                          "parameters" : {
+                            "clickDuration" : {
+                              "type" : "double",
+                              "defaultValue" : 1.25,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-alpha" : {
+                              "type" : "double",
+                              "defaultValue" : 1.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-blue" : {
+                              "type" : "double",
+                              "defaultValue" : 0.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-green" : {
+                              "type" : "double",
+                              "defaultValue" : 0.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "color-red" : {
+                              "type" : "double",
+                              "defaultValue" : 1.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "postClickPercent" : 100.0,
+                            "radius" : {
+                              "type" : "double",
+                              "defaultValue" : 50.0,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            },
+                            "scale" : {
+                              "type" : "double",
+                              "defaultValue" : 0.5,
+                              "interp" : "linr",
+                              "uiHints" : {
+                                "userInterfaceType" : 0,
+                                "unitType" : 0
+                              }
+                            }
+                          }
+                        }
+                    ],
+                    "start" : 419,
+                    "duration" : 9,
+                    "mediaStart" : 30,
+                    "mediaDuration" : 9,
                     "scalar" : 1,
                     "metadata" : {
                       "AutoAppliedSmartFocus" : "False",
@@ -304,12 +465,13 @@
                 "transitions" : [
                   {
                     "name" : "FadeThroughBlack",
-                    "duration" : 20,
+                    "duration" : 9,
                     "trivial" : false,
                     "reverse" : false,
                     "useAudioPreRoll" : true,
                     "useVisualPreRoll" : true,
-                    "leftMedia" : 4
+                    "leftMedia" : 4,
+                    "rightMedia" : 5
                   }
                 ]
               },
@@ -361,7 +523,7 @@
     "backgroundColor" : [ 0, 0, 0, 255]
   },
   "metadata" : {
-    "AutoSaveFile" : "",
+    "AutoSaveFile" : "C:\\Users\\glen\\AppData\\Local\\TechSmith\\Camtasia Studio\\19.0\\Auto-Saves\\AnimationRules42a95b7.autosave.tscproj",
     "CanvasZoom" : 100,
     "Date" : "2019-11-14 11:00:29 AM",
     "IsAutoSave" : "0",
