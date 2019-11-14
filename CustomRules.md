@@ -27,13 +27,14 @@ Firstly you will need the UTF-16 values for the character that you want to find 
 
 1. Install the extension [Unicode code point of current character](https://marketplace.visualstudio.com/items?itemName=zeithaste.cursorCharCode)
 
-1. Select the character in Visual Studio code
+1. Type or copy the good and bad characters into Visual Studio code.
 
-1. Replace character to \uFFFF form
+1. Replace characters to \uFFFF form using the above extension.
 
     ```plaintext
-    Control + Shift + P
-    CursorCharCode: Replace character to \uFFFF form
+    Press: Control + Shift + P
+    Type:  CursorCharCode: Replace character to \uFFFF form
+    Press: Enter
     ```
 
 ![Animation](/images/AnimationRules.gif)
@@ -54,16 +55,33 @@ Insert them into the JSON below remembering to escape the backslash.
     ]
 ```
 
-Example:
+The following example is based on the above animation:
 
 ```json
     "unicodesubsitutions.rules": [
         {
-            "invalid": "\\u058A",
+            "invalid": "\\ud83d\\ude42",
+            "valid": "\\u003a\\u0029",
+            "message": "Smiling face should be a Colon and Bracket."
+        },
+        {
+            "invalid": "\\u2012",
             "valid": "\\u002D",
-            "message": "Armenian hyphen should be a hyphen."
+            "message": "Figure Dash should be a hyphen."
         }
     ]
 ```
 
+Note the double back slashes.
+Note the smiling face is a double UTF-16.
+
 ### Add it to your settings.json
+
+1. Open Settings.json
+
+    ```plaintext
+    Press: Control + Shift + P
+    Type:  Preferences: Open Settings (JSON)
+    ```
+
+1. Paste in rules
