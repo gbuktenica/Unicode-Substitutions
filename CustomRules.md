@@ -84,4 +84,4 @@ Note the smiling face is a double UTF-16.
     Type:  Preferences: Open Settings (JSON)
     ```
 
-1. Paste in rules
+1. Paste in the rules
