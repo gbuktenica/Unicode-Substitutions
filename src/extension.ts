@@ -9,7 +9,7 @@ let supportedLanguages = vscode.workspace.getConfiguration().get('unicodesubsitu
 let enableDefaultRules = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableDefaultRules');
 let enableFormatting = vscode.workspace.getConfiguration().get('unicodesubsitutions.enableFormatting');
 let documentSelector = {
-    "scheme": 'file',
+    "scheme": '*',
     "file": supportedLanguages
 };
 let lintingRules: Array<any> = [];
