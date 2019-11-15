@@ -4,6 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.5
+
+Stable Release.
+Removed regression that prevented unsaved files being linted.
+Added detailed instructions for writing custom rules.
+
 - 2.2.4
 
 Stable Release.
