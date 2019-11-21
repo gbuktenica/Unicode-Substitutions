@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import * as defaultRulesJson from "./defaultRules.json"
+import * as defaultRulesJson from "./defaultRules.json";
 let diagnosticCollection = null;
 diagnosticCollection = vscode.languages.createDiagnosticCollection("extensionDisplayName");
 const fixLineCommandName = "unicodesubsitutions.fixLine";
@@ -39,12 +39,12 @@ export function activate(context: vscode.ExtensionContext) {
         // Formats the whole document when triggered by "Format Document"
         vscode.languages.registerDocumentFormattingEditProvider(documentSelector, {
             provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-                return formatDocument(context, document, null)
+                return formatDocument(context, document, null);
             }
         });
         vscode.languages.registerDocumentRangeFormattingEditProvider(documentSelector, {
             provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]> {
-                return formatDocument(context, document, range)
+                return formatDocument(context, document, range);
             }
         });
     }
@@ -70,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
 function stringToRegex(string) {
     //Convert unicode string values to a regex global object
     let regex = new RegExp(string, 'g');
-    return regex
+    return regex;
 }
 
 function unicodeToChar(text) {
@@ -91,22 +91,22 @@ export function formatDocument(context: vscode.ExtensionContext, document: vscod
     }
     let edits: vscode.TextEdit[] = [];
     const text = document.getText(range);
-    let match
+    let match;
     //Loop through each rule
     lintingRules.forEach(rule => {
-        let regEx = stringToRegex(rule.invalid)
-        let stringValid = unicodeToChar(rule.valid)
+        let regEx = stringToRegex(rule.invalid);
+        let stringValid = unicodeToChar(rule.valid);
         //Loop through character match to the current linting rule
         while (match = regEx.exec(text)) {
             // Loop through each regex match.
             let offset = document.offsetAt(range.start);
             let startPos = document.positionAt(offset + match.index);
             let endPos = document.positionAt(offset + match.index + match[0].length);
-            let newRange = new vscode.Range(startPos, endPos)
+            let newRange = new vscode.Range(startPos, endPos);
             edits.push(vscode.TextEdit.replace(newRange, stringValid));
         }
     });
-    return edits
+    return edits;
 }
 
 function updateLinting(context) {
@@ -115,14 +115,14 @@ function updateLinting(context) {
         return;
     }
     //console.log('Unicode Substitutions linting has started');
-    const diagnostics = []
-    let match
+    const diagnostics = [];
+    let match;
     const text = activeEditor.document.getText();
     context.subscriptions.push(diagnosticCollection);
     //Loop through each linting rule
-    let ruleIndex = 0
+    let ruleIndex = 0;
     lintingRules.forEach(rule => {
-        let regEx = stringToRegex(rule.invalid)
+        let regEx = stringToRegex(rule.invalid);
         //Loop through each regex match of a rule.
         while (match = regEx.exec(text)) {
             const startPos = activeEditor.document.positionAt(match.index);
@@ -134,7 +134,7 @@ function updateLinting(context) {
             diagnostic.source = "Unicode Substitutions";
             diagnostics.push(diagnostic);
         }
-        ruleIndex++
+        ruleIndex++;
     });
     // Push diagnostics to Visual Studio Code
     diagnosticCollection.set(activeEditor.document.uri, diagnostics);
@@ -149,7 +149,7 @@ function provideCodeActions(document, range, codeActionContext) {
         .forEach((diagnostic) => {
             // Provide code action to fix the violation
             const vscode = require("vscode");
-            const fixTitle = lintingRules[diagnostic.code].message
+            const fixTitle = lintingRules[diagnostic.code].message;
             const fixAction = new vscode.CodeAction(fixTitle, vscode.CodeActionKind.QuickFix);
             fixAction.command = {
                 "title": fixTitle,
@@ -169,7 +169,7 @@ function fixLine(range, ruleName) {
     // Fixes individual linting violations when the light bulb is clicked.
     let edit = new vscode.WorkspaceEdit();
     // Read linting fix from Linting Rules array
-    let stringValid = unicodeToChar(lintingRules[ruleName].valid)
+    let stringValid = unicodeToChar(lintingRules[ruleName].valid);
     edit.replace(activeEditor.document.uri, range, stringValid);
     return vscode.workspace.applyEdit(edit);
 }
