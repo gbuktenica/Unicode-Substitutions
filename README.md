@@ -2,6 +2,9 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Copyright Glen Buktenica](https://img.shields.io/badge/Copyright-Glen_Buktenica-blue.svg)](http://buktenica.com)
+[![Build Status](https://glenbuktenica.visualstudio.com/Unicode-Substitutions/_apis/build/status/gbuktenica.Unicode-Substitutions?branchName=Issue-8)](https://glenbuktenica.visualstudio.com/Unicode-Substitutions/_build/latest?definitionId=1&branchName=Issue-8)
+[![Version](https://vsmarketplacebadge.apphb.com/version/glenbuktenica.Unicode-Substitutions.svg)](https://marketplace.visualstudio.com/manage/publishers/glenbuktenica)
+[![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/glenbuktenica.Unicode-Substitutions.svg)](https://marketplace.visualstudio.com/manage/publishers/glenbuktenica)
 
 ## Overview
 
