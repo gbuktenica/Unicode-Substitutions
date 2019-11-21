@@ -1,5 +1,10 @@
 {
     "rules": {
+        "indent": [
+            true,
+            "spaces",
+            4
+        ],
         "no-string-throw": true,
         "no-unused-expression": true,
         "no-duplicate-variable": true,

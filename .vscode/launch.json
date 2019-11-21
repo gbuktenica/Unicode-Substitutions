@@ -6,7 +6,11 @@
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
-            "args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
+            "args": [
+                "--disable-extensions",
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "${workspaceFolder}/src/test/files/PowerShell.ps1"
+            ],
             "stopOnEntry": false,
             "sourceMaps": true,
             "outFiles": [ "${workspaceRoot}/out/**/*.js" ],
@@ -18,6 +22,7 @@
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
+                "--disable-extensions",
                 "--extensionDevelopmentPath=${workspaceFolder}",
                 "--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
             ],
