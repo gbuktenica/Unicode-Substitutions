@@ -11,7 +11,7 @@
     },
     "homepage": "https://github.com/gbuktenica/Unicode-Substitutions/blob/master/README.md",
     "engines": {
-        "vscode": "^1.32.0"
+        "vscode": "^1.33.0"
     },
     "categories": [
         "Linters",
@@ -82,7 +82,7 @@
     "devDependencies": {
         "@types/glob": "^7.1.1",
         "@types/mocha": "^5.2.7",
-        "@types/vscode": "^1.32.0",
+        "@types/vscode": "^1.33.0",
         "@types/node": "12.12.11",
         "glob": "^7.1.6",
         "mocha": "^6.2.2",
