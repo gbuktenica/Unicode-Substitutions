@@ -22,8 +22,7 @@
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
-                "${workspaceFolder}/src/test/files/PowerShell.ps1",
-                "--disable-extensions",
+                "${workspaceRoot}/src/test/workspace/",
                 "--extensionDevelopmentPath=${workspaceFolder}",
                 "--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
             ],

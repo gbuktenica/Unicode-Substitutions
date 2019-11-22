@@ -2,28 +2,46 @@ import * as assert from 'assert';
 import { after } from 'mocha';
 import * as vscode from 'vscode';
 //import * as extension from '../../extension';
+//https://github.com/microsoft/azure-pipelines-vscode/blob/master/src/test/extension.test.ts
 
-suite('Extension Test Suite', () => {
-    after(() => {
-        vscode.window.showInformationMessage('All tests done!');
-    });
+const extensionId = "glenbuktenica.Unicode-Substitutions";
 
-    //Extension tests
-    test("Should start extension", async () => {
-        const started = vscode.extensions.getExtension(
-            "glenbuktenica.Unicode-Substitutions",
-        ).isActive;
+suite('Extension Setup Tests', function () {
+    this.timeout(20000);
+
+    test("Extension is active", async () => {
+        // Arrange and Act
+        await sleep(2000);
+        const started = vscode.extensions.getExtension(extensionId).isActive;
+
+        // Assert
         assert.equal(started, true);
     });
-
-    //Format tests
-
-    //Linting tests
-
 });
 
-function sleep(ms: number): Promise<void> {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms);
+suite('Linting Tests', function () {
+    this.timeout(20000);
+
+    test('Given an empty document, there should be no validation errors', async () => {
+        // Arrange
+        const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('emptyFile.yml');
+        const emptyFile: vscode.Uri = emptyFiles[0];
+
+        // Act
+        const emptyDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(emptyFile);
+        await vscode.window.showTextDocument(emptyDocument);
+        await sleep(3000); // Give it time to show the validation errors, if any
+        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(emptyFile);
+
+        // Assert
+        assert.equal(emptyDocument.languageId, 'yaml');
+        assert.equal(diagnostics.length, 0);
     });
+});
+
+suite('Formatting Tests', function () {
+});
+
+async function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
