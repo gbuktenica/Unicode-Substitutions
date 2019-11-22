@@ -8,8 +8,22 @@ suite('Extension Test Suite', () => {
         vscode.window.showInformationMessage('All tests done!');
     });
 
-    test('Sample test', () => {
-        assert.equal(-1, [1, 2, 3].indexOf(5));
-        assert.equal(-1, [1, 2, 3].indexOf(0));
+    //Extension tests
+    test("Should start extension", async () => {
+        const started = vscode.extensions.getExtension(
+            "glenbuktenica.Unicode-Substitutions",
+        ).isActive;
+        assert.equal(started, true);
     });
+
+    //Format tests
+
+    //Linting tests
+
 });
+
+function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}

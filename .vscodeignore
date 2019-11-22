@@ -8,3 +8,4 @@ typings/**
 .gitattributes
 tsconfig.json
 src/test/**
+out/test/**
