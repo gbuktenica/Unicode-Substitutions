@@ -3,6 +3,7 @@ import { after } from 'mocha';
 import * as vscode from 'vscode';
 //import * as extension from '../../extension';
 //https://github.com/microsoft/azure-pipelines-vscode/blob/master/src/test/extension.test.ts
+//https://github.com/yzhang-gh/vscode-markdown/blob/master/src/test/suite/testUtils.ts
 
 const extensionId = "glenbuktenica.Unicode-Substitutions";
 
