@@ -24,47 +24,47 @@ suite('Linting Tests', function () {
 
     test('Given an empty yaml document, there should be no validation errors', async () => {
         // Arrange
-        const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('emptyFile.yml');
-        const emptyFile: vscode.Uri = emptyFiles[0];
+        const testFiles: vscode.Uri[] = await vscode.workspace.findFiles('testFile.yml');
+        const testFile: vscode.Uri = testFiles[0];
 
         // Act
-        const emptyDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(emptyFile);
-        await vscode.window.showTextDocument(emptyDocument);
+        const testDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(testFile);
+        await vscode.window.showTextDocument(testDocument);
         await sleep(3000); // Give it time to show the validation errors, if any
-        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(emptyFile);
+        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(testFile);
 
         // Assert
-        assert.equal(emptyDocument.languageId, 'yaml');
+        assert.equal(testDocument.languageId, 'yaml');
         assert.equal(diagnostics.length, 0);
     });
     test('Given a bad markdown document, there should be validation errors', async () => {
         // Arrange
-        const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('badMarkdown.md');
-        const emptyFile: vscode.Uri = emptyFiles[0];
+        const testFiles: vscode.Uri[] = await vscode.workspace.findFiles('badMarkdown.md');
+        const testFile: vscode.Uri = testFiles[0];
 
         // Act
-        const emptyDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(emptyFile);
-        await vscode.window.showTextDocument(emptyDocument);
+        const testDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(testFile);
+        await vscode.window.showTextDocument(testDocument);
         await sleep(3000); // Give it time to show the validation errors, if any
-        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(emptyFile);
+        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(testFile);
 
         // Assert
-        assert.equal(emptyDocument.languageId, 'markdown');
+        assert.equal(testDocument.languageId, 'markdown');
         assert.equal(diagnostics.length, 11);
     });
     test('Given a bad PowerShell document, there should be validation errors', async () => {
         // Arrange
-        const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('badPowerShell.ps1');
-        const emptyFile: vscode.Uri = emptyFiles[0];
+        const testFiles: vscode.Uri[] = await vscode.workspace.findFiles('badPowerShell.ps1');
+        const testFile: vscode.Uri = testFiles[0];
 
         // Act
-        const emptyDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(emptyFile);
-        await vscode.window.showTextDocument(emptyDocument);
+        const testDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(testFile);
+        await vscode.window.showTextDocument(testDocument);
         await sleep(3000); // Give it time to show the validation errors, if any
-        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(emptyFile);
+        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(testFile);
 
         // Assert
-        assert.equal(emptyDocument.languageId, 'powershell');
+        assert.equal(testDocument.languageId, 'powershell');
         assert.equal(diagnostics.length, 9);
     });
 });
