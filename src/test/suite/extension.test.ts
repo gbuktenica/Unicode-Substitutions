@@ -22,7 +22,7 @@ suite('Extension Setup Tests', function () {
 suite('Linting Tests', function () {
     this.timeout(20000);
 
-    test('Given an empty document, there should be no validation errors', async () => {
+    test('Given an empty yaml document, there should be no validation errors', async () => {
         // Arrange
         const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('emptyFile.yml');
         const emptyFile: vscode.Uri = emptyFiles[0];
@@ -36,6 +36,36 @@ suite('Linting Tests', function () {
         // Assert
         assert.equal(emptyDocument.languageId, 'yaml');
         assert.equal(diagnostics.length, 0);
+    });
+    test('Given a bad markdown document, there should be validation errors', async () => {
+        // Arrange
+        const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('badMarkdown.md');
+        const emptyFile: vscode.Uri = emptyFiles[0];
+
+        // Act
+        const emptyDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(emptyFile);
+        await vscode.window.showTextDocument(emptyDocument);
+        await sleep(3000); // Give it time to show the validation errors, if any
+        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(emptyFile);
+
+        // Assert
+        assert.equal(emptyDocument.languageId, 'markdown');
+        assert.equal(diagnostics.length, 11);
+    });
+    test('Given a bad PowerShell document, there should be validation errors', async () => {
+        // Arrange
+        const emptyFiles: vscode.Uri[] = await vscode.workspace.findFiles('badPowerShell.ps1');
+        const emptyFile: vscode.Uri = emptyFiles[0];
+
+        // Act
+        const emptyDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(emptyFile);
+        await vscode.window.showTextDocument(emptyDocument);
+        await sleep(3000); // Give it time to show the validation errors, if any
+        const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(emptyFile);
+
+        // Assert
+        assert.equal(emptyDocument.languageId, 'powershell');
+        assert.equal(diagnostics.length, 9);
     });
 });
 
