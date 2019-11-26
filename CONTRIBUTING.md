@@ -20,13 +20,13 @@ Install the following prerequisites:
 
 NodeJS
 
-```Command
+```plaintext
 choco install nodejs.install
 ```
 
 Visual Studio Code Extensions
 
-```Command
+```plaintext
 npm install -g vsce
 ```
 
@@ -36,20 +36,22 @@ Clone this repository
 
 ### Package
 
-```Command
+```plaintext
 npm install
 vsce package
 ```
 
 ### Debug
 
-Start the Visual Studio Code debugger.
+```plaintext
+npm test
+```
 
 ### Update
 
 NPM packages frequently require updates
 
-```command
+```plaintext
 npm audit fix
 ```
 
@@ -57,7 +59,7 @@ npm audit fix
 
 Push the updated extension to the marketplace. This must be done by the organisation owner.
 
-```Command
+```plaintext
 vsce publish <TOKEN>
 ```
 
