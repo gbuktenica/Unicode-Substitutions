@@ -9,7 +9,7 @@
             "args": [
                 "--disable-extensions",
                 "--extensionDevelopmentPath=${workspaceFolder}",
-                "${workspaceFolder}/src/test/files/PowerShell.ps1"
+                "${workspaceFolder}/TestFiles/PowerShell.ps1"
             ],
             "stopOnEntry": false,
             "sourceMaps": true,
