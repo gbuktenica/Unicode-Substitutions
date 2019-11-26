@@ -28,13 +28,17 @@ suite('Linting Tests', function () {
 
         // Act
         const unsavedDocument: vscode.TextDocument = await vscode.workspace.openTextDocument(unsavedFile);
-        await vscode.window.showTextDocument(unsavedDocument);
+        await vscode.window.showTextDocument(unsavedDocument).then(editor => {
+            editor.edit(edit => {
+                edit.insert(new vscode.Position(0, 0), "Em Dash —");
+            });
+        });
         await sleep(3000); // Give it time to show the validation errors, if any
         const diagnostics: vscode.Diagnostic[] = vscode.languages.getDiagnostics(unsavedFile);
 
         // Assert
         assert.equal(unsavedDocument.languageId, 'plaintext');
-        assert.equal(diagnostics.length, 0);
+        assert.equal(diagnostics.length, 1);
     });
     test('Given an empty yaml document, there should be no validation errors', async () => {
         // Arrange
