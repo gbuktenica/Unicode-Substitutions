@@ -54,6 +54,11 @@
             "invalid": "\\uD83D\\uDE0A",
             "valid": "\\u003A\\u0029",
             "message": "Smiling face with smiling eyes should be a colon and parentheses"
+        },
+        {
+            "invalid": "\\u00A0",
+            "valid": "\\u0020",
+            "message": "Non breaking space should be a space."
         }
     ]
 }

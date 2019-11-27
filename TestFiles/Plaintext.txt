@@ -1,3 +1,4 @@
 This – test – file — has ‘a‘ lot — of random syntax
 across –   ―      “ | “  a number
 of lines’ of ’text.
+ 
