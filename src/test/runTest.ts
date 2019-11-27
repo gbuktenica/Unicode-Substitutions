@@ -1,3 +1,5 @@
+// This file is called by 'npm run test'
+// It runs the same tests as the debugger step 'Run Extension Tests' from launch.json
 import * as path from 'path';
 
 import { runTests } from 'vscode-test';
@@ -12,7 +14,7 @@ async function main() {
         // Passed to --extensionTestsPath
         const extensionTestsPath = path.resolve(__dirname, './suite/index');
 
-        // The path to the workspace
+        // The path to the extension test workspace
         const testWorkspace = path.resolve(__dirname, extensionDevelopmentPath + '/src/test/workspace/');
 
         // Download VS Code, unzip it and run the integration test

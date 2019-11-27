@@ -27,7 +27,8 @@
         "lint": "tslint -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile",
-        "test": "node ./out/test/runTest.js"
+        "test": "node ./out/test/runTest.js",
+        "unittest": "node_modules/.bin/mocha ./out/unittest/*.unit.test.js --ui=tdd --recursive --colors --timeout=300000"
     },
     "contributes": {
         "configuration": {
