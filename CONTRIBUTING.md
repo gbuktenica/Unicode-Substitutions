@@ -34,17 +34,12 @@ npm install -g vsce
 
 Clone this repository
 
-### Package
-
-```plaintext
-npm install
-vsce package
-```
-
 ### Debug
 
 ```plaintext
-npm test
+npm run compile
+npm run unittest
+npm run test
 ```
 
 ### Update
@@ -53,6 +48,13 @@ NPM packages frequently require updates
 
 ```plaintext
 npm audit fix
+```
+
+### Package
+
+```plaintext
+npm install
+vsce package
 ```
 
 ### Publish
