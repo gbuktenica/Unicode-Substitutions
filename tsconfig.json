@@ -1,17 +1,26 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
+        "target": "es6",
         "outDir": "out",
         "lib": [
-            "es6"
+            "es7"
         ],
         "sourceMap": true,
         "rootDir": "src",
         "resolveJsonModule": true,
         "esModuleInterop": true
+        //"strict": true
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        ".vscode-test"
+    ],
+    "include": [
+        "src/**/*.ts",
+        "src/test/**/*.ts",
+        "src/unittest/**/*.ts",
+        "./node_modules/vscode/vscode.d.ts",
+        "./node_modules/vscode/lib/*",
     ]
 }
