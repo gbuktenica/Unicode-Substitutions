@@ -1,18 +1,18 @@
 {
-        "editor.formatOnPaste": false,
-        "[powershell]": {
-                "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
-        },
-        "[yaml]": {
-                "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
-        },
-        "[markdown]": {
-                "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
-        },
-        "[python]": {
-                "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
-        },
-        "[plaintext]": {
-                "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
-        }
+    "editor.formatOnPaste": false,
+    "[powershell]": {
+        "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
+    },
+    "[python]": {
+        "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
+    },
+    "[plaintext]": {
+        "editor.defaultFormatter": "GlenBuktenica.unicode-substitutions",
+    }
 }
