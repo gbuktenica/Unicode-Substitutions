@@ -10,8 +10,8 @@ strategy:
       imageName: 'ubuntu-16.04'
     mac:
       imageName: 'macos-10.13'
-#    windows:
-#      imageName: 'vs2017-win2016'
+    windows:
+      imageName: 'vs2017-win2016'
 
 pool:
   vmImage: $(imageName)
@@ -32,10 +32,8 @@ steps:
 - bash: |
     echo ">>> Compile vscode-test"
     npm install && npm run compile
-    echo ">>> Compiled vscode-test"
-    cd sample
     echo ">>> Run integration test"
-    npm install && npm run compile && npm run unittest && npm run test
+    npm run test
   displayName: Run Tests
   env:
     DISPLAY: ':99.0'
