@@ -47,6 +47,7 @@ npm run test
 NPM packages frequently require updates
 
 ```plaintext
+npm upgrade
 npm audit fix
 ```
 
