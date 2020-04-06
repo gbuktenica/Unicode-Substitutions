@@ -11,7 +11,7 @@
     },
     "homepage": "https://github.com/gbuktenica/Unicode-Substitutions/blob/master/README.md",
     "engines": {
-        "vscode": "^1.33.0"
+        "vscode": "^1.43.0"
     },
     "categories": [
         "Linters",
