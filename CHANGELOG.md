@@ -4,7 +4,12 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.7
+
+Align engine and types for vscode.
+
 - 2.2.6
+
 Fix [CVE-2020-7598](https://nvd.nist.gov/vuln/detail/CVE-2020-7598).
 
 - 2.2.5
