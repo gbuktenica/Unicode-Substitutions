@@ -4,6 +4,10 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.2.8
+
+Fix [lodash - Prototype Pollution](https://snyk.io/test/npm/lodash/4.17.15?tab=issues).
+
 - 2.2.7
 
 Align engine and types for vscode.
