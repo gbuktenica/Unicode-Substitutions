@@ -19,6 +19,8 @@ Update all dev dependencies to latest.
  typescript             ^3.8.3  →     ^4.1.3
  vscode-test            ^1.2.3  →     ^1.4.1
 
+Remove incomplete unit tests from master branch.
+
 - 2.2.8
 
 Fix [lodash - Prototype Pollution](https://snyk.io/test/npm/lodash/4.17.15?tab=issues).
