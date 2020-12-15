@@ -18,16 +18,26 @@ Install the following prerequisites:
 
 [Visual Studio Code](https://code.visualstudio.com/)
 
-NodeJS
+```bash
+choco install vscode.install
+```
 
-```plaintext
+[NodeJS](https://nodejs.org/en/)
+
+```bash
 choco install nodejs.install
 ```
 
-Visual Studio Code Extensions
+[Visual Studio Code Extensions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
 
-```plaintext
+```bash
 npm install -g vsce
+```
+
+[NPM Check Updates](https://www.npmjs.com/package/npm-check-updates) for updating the package.json
+
+```bash
+npm install -g npm-check-updates
 ```
 
 ### Clone
@@ -36,9 +46,8 @@ Clone this repository
 
 ### Debug
 
-```plaintext
+```bash
 npm run compile
-npm run unittest
 npm run test
 ```
 
@@ -46,14 +55,20 @@ npm run test
 
 NPM packages frequently require updates
 
-```plaintext
+```bash
 npm upgrade
 npm audit fix
 ```
 
+To upgrade all dev dependencies to latest and update the package.json
+
+```bash
+npm-check-updates -u
+```
+
 ### Package
 
-```plaintext
+```bash
 npm install
 vsce package
 ```
@@ -62,8 +77,10 @@ vsce package
 
 Push the updated extension to the marketplace. This must be done by the organisation owner.
 
-```plaintext
-vsce publish <TOKEN>
+Tokens can be created [here](https://dev.azure.com/GlenBuktenica/_usersSettings/tokens)
+
+```bash
+vsce publish -p <TOKEN>
 ```
 
 Manually if required
