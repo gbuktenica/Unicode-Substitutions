@@ -78,6 +78,8 @@ vsce package
 
 Push the updated extension to the marketplace. This must be done by the organisation owner.
 
+Tokens can be created [here](https://dev.azure.com/GlenBuktenica/_usersSettings/tokens)
+
 ```bash
 vsce publish <TOKEN>
 ```
