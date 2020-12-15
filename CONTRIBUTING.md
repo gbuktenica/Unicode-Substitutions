@@ -48,7 +48,6 @@ Clone this repository
 
 ```bash
 npm run compile
-npm run unittest
 npm run test
 ```
 

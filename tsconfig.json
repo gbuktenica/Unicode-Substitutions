@@ -19,7 +19,6 @@
     "include": [
         "src/**/*.ts",
         "src/test/**/*.ts",
-        "src/unittest/**/*.ts",
         "./node_modules/vscode/vscode.d.ts",
         "./node_modules/vscode/lib/*",
     ]
