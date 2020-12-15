@@ -21,9 +21,9 @@ The following example is a linting rule that would be added to a settings.json f
 
 ## How to create a rule
 
-### Find the Unicode UTF-16 values
+### Find the Unicode UTF-16BE values
 
-Firstly you will need the UTF-16 values for the character that you want to find and the UTF-16 value for the character you want to replace it with.
+Firstly you will need the UTF-16BE values for the character that you want to find and the UTF-16 value for the character you want to replace it with.
 
 1. Install the extension [Unicode code point of current character](https://marketplace.visualstudio.com/items?itemName=zeithaste.cursorCharCode)
 
