@@ -4,6 +4,21 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.3.0
+
+Update all dev dependencies to latest.
+
+ @types/glob            ^7.1.1  →     ^7.1.3
+ @types/mocha           ^5.2.7  →     ^8.2.0
+ @types/node         ^12.12.34  →  ^14.14.13
+ @types/vscode         ^1.43.0  →    ^1.52.0
+ diff                  >=4.0.1  →    >=5.0.0
+ mocha                  ^6.2.3  →     ^8.2.1
+ source-map-support    ^0.5.12  →    ^0.5.19
+ tar                   >=5.0.5  →    >=6.0.5
+ typescript             ^3.8.3  →     ^4.1.3
+ vscode-test            ^1.2.3  →     ^1.4.1
+
 - 2.2.8
 
 Fix [lodash - Prototype Pollution](https://snyk.io/test/npm/lodash/4.17.15?tab=issues).
