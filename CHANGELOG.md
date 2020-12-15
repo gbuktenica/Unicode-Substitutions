@@ -21,6 +21,8 @@ Update all dev dependencies to latest.
 
 Remove incomplete unit tests from master branch.
 
+Updated developer documentation.
+
 - 2.2.8
 
 Fix [lodash - Prototype Pollution](https://snyk.io/test/npm/lodash/4.17.15?tab=issues).

@@ -80,7 +80,7 @@ Push the updated extension to the marketplace. This must be done by the organisa
 Tokens can be created [here](https://dev.azure.com/GlenBuktenica/_usersSettings/tokens)
 
 ```bash
-vsce publish <TOKEN>
+vsce publish -p <TOKEN>
 ```
 
 Manually if required
