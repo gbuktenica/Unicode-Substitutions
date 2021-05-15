@@ -95,7 +95,9 @@ Push the updated extension to the marketplace. This must be done by the organisa
 
 Tokens can be created [here](https://dev.azure.com/GlenBuktenica/_usersSettings/tokens)
 
-Required Scope is: Custom defined > Show All Scopes > Marketplace > Publish
+Organization:   All accessible organizations
+
+Required Scope: Custom defined > Show All Scopes > Marketplace > Publish
 
 ```bash
 vsce publish -p <TOKEN>
