@@ -4,6 +4,10 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.3.2
+
+Run a vsce "Package" as a part of the test pipeline.
+
 - 2.3.1
 
 Fix [lodash - Command Injection via the template function](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-23337)
