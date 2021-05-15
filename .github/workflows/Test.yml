@@ -16,9 +16,3 @@ jobs:
       - run: |
           npm run compile
           npm run test
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Publish
-        run: vsce publish -p ${{ secrets.VSCE_PAT }}

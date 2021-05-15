@@ -13,11 +13,18 @@ jobs:
         with:
           node-version: 15
           registry-url: https://registry.npmjs.org/
-      - run: |
+      - name: Install
+        run: |
           npm install
-      - run: |
+      - name: VSCE
+        run: |
           npm install -g vsce
-      - run: |
+      - name: Compile
+        run: |
           npm run compile
+      - name: Package
+        run: |
+          vsce package
       - name: Publish
-        run: vsce publish -p ${{ secrets.ACTIONS }}
+        run: |
+          vsce publish -p ${{ secrets.ACTIONS }}
