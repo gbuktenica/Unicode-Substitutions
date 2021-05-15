@@ -10,7 +10,7 @@ jobs:
           node-version: 15
           registry-url: https://registry.npmjs.org/
       - name: Install
-      - run: |
+        run: |
           npm install
           npm install -g vsce
       - name: Test
