@@ -4,6 +4,16 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.3.1
+
+Fix [lodash - Command Injection via the template function](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-23337)
+
+Update all dev dependencies to latest.
+
+Add pre-commit hooks for master / main.
+
+Migrated pipeline to Github Actions
+
 - 2.3.0
 
 Update all dev dependencies to latest.

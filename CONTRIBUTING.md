@@ -44,6 +44,22 @@ npm install -g npm-check-updates
 
 Clone this repository
 
+### Branching
+
+Note that commits to master are prevented in the remote. A precommit hook is located in .githooks that will stop commits to the local master.
+
+To activate it run:
+
+```bash
+git config --local core.hooksPath .githooks/
+```
+
+To confirm that it is set run:
+
+```bash
+git config --local --get core.hooksPath
+```
+
 ### Debug
 
 ```bash
@@ -78,6 +94,8 @@ vsce package
 Push the updated extension to the marketplace. This must be done by the organisation owner.
 
 Tokens can be created [here](https://dev.azure.com/GlenBuktenica/_usersSettings/tokens)
+
+Required Scope is: Custom defined > Show All Scopes > Marketplace > Publish
 
 ```bash
 vsce publish -p <TOKEN>
