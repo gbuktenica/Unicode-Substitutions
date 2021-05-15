@@ -12,6 +12,8 @@ Update all dev dependencies to latest.
 
 Add pre-commit hooks for master / main.
 
+Migrated pipeline to Github Actions
+
 - 2.3.0
 
 Update all dev dependencies to latest.
