@@ -1,0 +1,23 @@
+name: Release
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 15
+          registry-url: https://registry.npmjs.org/
+      - run: |
+          npm install
+      - run: |
+          npm install -g vsce
+      - run: |
+          npm run compile
+      - name: Publish
+        run: vsce publish -p ${{ secrets.ACTIONS }}
