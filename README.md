@@ -5,6 +5,7 @@
 [![Build Status](https://glenbuktenica.visualstudio.com/Unicode-Substitutions/_apis/build/status/gbuktenica.Unicode-Substitutions?branchName=master)](https://glenbuktenica.visualstudio.com/Unicode-Substitutions/_build/latest?definitionId=1&branchName=master)
 [![Version](https://vsmarketplacebadge.apphb.com/version/glenbuktenica.Unicode-Substitutions.svg)](https://marketplace.visualstudio.com/manage/publishers/glenbuktenica)
 [![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/glenbuktenica.Unicode-Substitutions.svg)](https://marketplace.visualstudio.com/manage/publishers/glenbuktenica)
+![Release](https://github.com/gbuktenica/Unicode-Substitutions/actions/workflows/github-actions.yml/badge.svg)
 
 ## Overview
 
