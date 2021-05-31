@@ -4,6 +4,7 @@
 [![Copyright Glen Buktenica](https://img.shields.io/badge/Copyright-Glen_Buktenica-blue.svg)](http://buktenica.com)
 [![Version](https://vsmarketplacebadge.apphb.com/version/glenbuktenica.Unicode-Substitutions.svg)](https://marketplace.visualstudio.com/manage/publishers/glenbuktenica)
 [![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/glenbuktenica.Unicode-Substitutions.svg)](https://marketplace.visualstudio.com/manage/publishers/glenbuktenica)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gbuktenica/Unicode-Substitutions/Test)
 
 ## Overview
 
