@@ -2,7 +2,7 @@
     "name": "unicode-substitutions",
     "displayName": "unicode-Substitutions",
     "description": "Lints and corrects common unicode substitutions such as quotes and hyphens.",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "publisher": "GlenBuktenica",
     "icon": "images/icon.png",
     "license": "MIT",
@@ -96,5 +96,8 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/gbuktenica/Unicode-Substitutions.git"
+    },
+    "dependencies": {
+        "npm-check-updates": "^11.6.0"
     }
 }
