@@ -88,7 +88,7 @@
         "fstream": ">=1.0.12",
         "mocha": "^8.4.0",
         "source-map-support": "^0.5.19",
-        "tar": ">=6.1.0",
+        "tar": ">=6.1.2",
         "tslint": "^5.20.1",
         "typescript": "^4.2.4",
         "vscode-test": "^1.5.2"
