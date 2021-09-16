@@ -4,6 +4,11 @@ All notable changes to the "unicode-substitutions" extension will be documented 
 
 ## Release
 
+- 2.3.3
+
+Fix path-parse vulnerability CVE-2021-23343
+Fix tar vulnerability CVE-2021-37712
+
 - 2.3.2
 
 Run a vsce "Package" as a part of the test pipeline.
