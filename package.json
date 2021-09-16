@@ -83,7 +83,7 @@
         "@types/glob": "^7.1.4",
         "@types/mocha": "^9.0.0",
         "@types/node": "^16.9.1",
-        "@types/vscode": "^1.60.0",
+        "@types/vscode": "^1.56.0",
         "diff": ">=5.0.0",
         "fstream": ">=1.0.12",
         "mocha": "^9.1.1",
